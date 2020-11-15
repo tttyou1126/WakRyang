@@ -23,6 +23,7 @@
 	text-align: center;
 }
 
+
 .table-hover>tbody>tr:hover {
 	background-color: #e6ecff;
 }
