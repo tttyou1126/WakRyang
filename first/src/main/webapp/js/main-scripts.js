@@ -1,3 +1,5 @@
+
+
 /*!
     * Start Bootstrap - Resume v6.0.2 (https://startbootstrap.com/theme/resume)
     * Copyright 2013-2020 Start Bootstrap
@@ -39,4 +41,20 @@
     $("body").scrollspy({
         target: "#sideNav",
     });
+    
+    $("#login").on("click", function(e){ // 목록으로
+		e.preventDefault();
+		fn_login();
+	});
+    
+    
 })(jQuery); // End of use strict
+
+    
+
+    
+    function fn_login(){
+		var comSubmit = new ComSubmit();
+		comSubmit.setUrl("<c:url value = '/main/loginScreen.do' />");
+		comSubmit.submit();
+	}

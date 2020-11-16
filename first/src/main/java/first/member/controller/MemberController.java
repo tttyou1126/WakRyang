@@ -25,4 +25,9 @@ public class MemberController {
         model.addAttribute("list", list);
         return "member/member_list"; // jsp
     }
+    
+    @RequestMapping("member/memberRegister.do") // 컨트롤러의 클래스를 불러올 url (별칭)
+    public String memberRegister(){
+        return "member/member_register";
+    }    
 }

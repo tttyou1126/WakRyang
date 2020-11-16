@@ -1,4 +1,5 @@
 <%@ page pageEncoding="utf-8"%>
+<%@ include file="/WEB-INF/include/include-header.jspf"%>
                <!-- Bootstrap -->
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <style>

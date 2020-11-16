@@ -25,9 +25,9 @@ public class SampleController {
 	@Resource(name = "sampleService")
 	private SampleService sampleService;
 
-	@RequestMapping(value = "/sample/main.do")
+	@RequestMapping(value = "/main/main.do")
 	public ModelAndView openSampleBoardList(Map<String, Object> commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("/sample/main");
+		ModelAndView mv = new ModelAndView("/main/main");
 		List<Map<String, Object>> list = sampleService.selectBoardList(commandMap);
 		mv.addObject("list", list);
 		return mv;
@@ -56,7 +56,7 @@ public class SampleController {
 
 	@RequestMapping(value = "/sample/insertBoard.do")
 	public ModelAndView insertBoard(CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("redirect:/sample/main.do");
+		ModelAndView mv = new ModelAndView("redirect:/main/main.do");
 
 		sampleService.insertBoard(commandMap.getMap());
 
@@ -89,7 +89,7 @@ public class SampleController {
 	
 	@RequestMapping(value = "/sample/deleteBoard.do")
 	public ModelAndView deleteBoard(CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("redirect:/sample/main.do");
+		ModelAndView mv = new ModelAndView("redirect:/main/main.do");
 		sampleService.deleteBoard(commandMap.getMap());
 		return mv;
 	}
