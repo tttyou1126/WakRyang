@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
 <head>
-	<title>Login V16</title>
+	<%@ include file="/WEB-INF/include/include-header.jspf"%>
+	<c:set var="path" value="${pageContext.request.contextPath}"/>
+
+	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -50,6 +52,10 @@
 					</div>
 
 					<div class="container-login100-form-btn m-t-32">
+						<button class="login100-form-btn" id="register">
+							Register
+						</button>
+						&nbsp;&nbsp;
 						<button class="login100-form-btn">
 							Login
 						</button>
@@ -78,7 +84,25 @@
 <!--===============================================================================================-->
 	<script src="/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script src="/js/login_main.js"></script>
-
+<script src="/js/login_main.js"></script>
+	
+<%@ include file="/WEB-INF/include/include-body.jspf"%>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#register").on("click", function(e){
+			e.preventDefault(); 
+			fn_register(); 
+		}); 
+	});
+	
+	function fn_register(){ 
+		var comSubmit = new ComSubmit(); 
+		comSubmit.setUrl("<c:url value='/member/register.do' />"); 
+		comSubmit.submit(); 
+	} 
+	</script>	
+	
+	
 </body>
 </html>
+

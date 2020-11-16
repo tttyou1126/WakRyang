@@ -12,7 +12,7 @@ import first.member.dao.MemberDAO;
 import first.member.vo.MemberVO;
 
 @Service("memberService")
-public class MemberServiceImpl implements MemberService {
+public class MemberServiceImpl implements MemberService { 
 	Log log = LogFactory.getLog(this.getClass());
 	
 	// MemberDAOImpl 객체를 스프링에서 생성하여 주입시킴
@@ -24,6 +24,14 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return memberDao.memberList();
 	}
+
+	@Override
+	public void insertMember(MemberVO vo) {
+		// TODO Auto-generated method stub
+		memberDao.insertMember(vo);
+	}
+
+
 
 
 }

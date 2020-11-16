@@ -12,6 +12,13 @@
         FROM tbl_member
         ORDER BY userName
     </select>
+    
+    <insert id="insertMember">
+        INSERT INTO tbl_member
+            (user_id, user_pw, user_name, user_email)
+        VALUES 
+            (#{userId}, #{userPw}, #{userName}, #{userEmail}) 
+    </insert>
 
 
 </mapper>

@@ -8,5 +8,8 @@ public interface MemberDAO {
 
 	List<MemberVO> memberList();
 
+	void insertMember(MemberVO vo);
+
+
 
 }

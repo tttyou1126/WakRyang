@@ -8,6 +8,10 @@ public interface MemberService {
 
 	List<MemberVO> memberList();
 
+	public void insertMember(MemberVO vo);
+
+	
+
 
 
 
