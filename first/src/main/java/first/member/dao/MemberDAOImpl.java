@@ -32,7 +32,7 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public void insertMember(MemberVO vo) {
 		// TODO Auto-generated method stub
-		sqlSession.selectList("member.insertMember");
+		sqlSession.selectList("member.insertMember", vo);
 	}
 
 }

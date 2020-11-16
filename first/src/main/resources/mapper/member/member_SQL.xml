@@ -15,9 +15,9 @@
     
     <insert id="insertMember">
         INSERT INTO tbl_member
-            (user_id, user_pw, user_name, user_email)
+            (user_id, user_pw, user_name, user_email, user_regdate, userUpdatedate)
         VALUES 
-            (#{userId}, #{userPw}, #{userName}, #{userEmail}) 
+            (#{userId}, #{userPw}, #{userName}, #{userEmail}, sysdate(), sysdate()) 
     </insert>
 
 
