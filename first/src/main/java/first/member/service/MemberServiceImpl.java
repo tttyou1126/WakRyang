@@ -31,6 +31,11 @@ public class MemberServiceImpl implements MemberService {
 		memberDao.insertMember(vo);
 	}
 
+	 @Override
+	    public MemberVO viewMember(String userId) {
+	        return memberDao.viewMember(userId);
+	    }
+
 
 
 

@@ -35,4 +35,12 @@ public class MemberDAOImpl implements MemberDAO{
 		sqlSession.selectList("member.insertMember", vo);
 	}
 
+	@Override
+	public MemberVO viewMember(String userId) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("member.memberView", userId);
+	}
+
+
+
 }

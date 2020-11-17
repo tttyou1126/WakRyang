@@ -10,10 +10,8 @@ public class MainController {
     // MainService MainService;
 
     @RequestMapping("main/loginScreen.do") // 컨트롤러의 클래스를 불러올 url (별칭)
-    public String memberList(){
+    public String loginScreen(){
         return "main/loginScreen"; // jsp
     }
-    
-
 
 }

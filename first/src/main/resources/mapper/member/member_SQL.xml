@@ -19,6 +19,17 @@
         VALUES 
             (#{userId}, #{userPw}, #{userName}, #{userEmail}, sysdate(), sysdate()) 
     </insert>
+    
+    <select id="memberView" resultType="first.member.vo.MemberVO">
+        SELECT 
+          user_id AS userId, 
+          user_name AS userName,
+          user_email AS userEmail,
+          user_regdate AS userRegdate,
+          user_regdate AS userUpdatedate
+        FROM tbl_member
+        WHERE user_id = #{userId}
+    </select>
 
 
 </mapper>

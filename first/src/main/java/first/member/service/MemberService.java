@@ -10,7 +10,8 @@ public interface MemberService {
 
 	public void insertMember(MemberVO vo);
 
-	
+	public MemberVO viewMember(String userId);
+
 
 
 

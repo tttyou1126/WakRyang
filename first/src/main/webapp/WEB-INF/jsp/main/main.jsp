@@ -40,6 +40,8 @@
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#baord">Board</a></li>
                 </ul>
             </div>
+            
+            <ul class="navbar-nav">  <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="${path}/member/list.do" ><font size="6">User</font></a> </li> </ul>  
         </nav>
         <!-- Page Content-->
         <div class="container-fluid p-0">
