@@ -22,7 +22,22 @@
         <!-- Navigation-->
         
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-        
+
+ 
+ <c:choose>
+	<c:when test="${empty sessionScope.userName}"> 
+		<ul class="navbar-nav">  <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="${path}/main/loginScreen.do" ><font size="6">Login</font></a> </li> </ul>
+	</c:when>
+	<c:when test="${not empty sessionScope.userName}"> 
+		<h2>${sessionScope.userName}(${sessionScope.userId})님</h2>
+		<ul class="navbar-nav">  <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="${path}/member/logout.do" ><font size="6">Logout</font></a> </li> </ul>	
+	</c:when>
+	<c:otherwise>
+		<ul class="navbar-nav">  <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="${path}/main/loginScreen.do" ><font size="6">Login</font></a> </li> </ul>
+	</c:otherwise>
+</c:choose>
+
+ <!--
 <%
 String msg = request.getParameter("msg");
 %>        
@@ -42,7 +57,7 @@ if (msg == null) {
 %>
 <ul class="navbar-nav">  <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="${path}/main/loginScreen.do" ><font size="6">Login</font></a> </li> </ul>
 <% } %>   
- 
+ -->
     
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
                 <span class="d-block d-lg-none">Sun Jong Min</span>
