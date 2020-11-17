@@ -7,6 +7,7 @@
 </head>
 <body>
 	<form id="frm">
+	<input type="hidden" id="CREA_ID" name="CREA_ID" value="${sessionScope.userName}">
 		<table class="board_view">
 			<colgroup>
 				<col width="15%">
@@ -21,6 +22,10 @@
 				<tr>
 					<td colspan="2" class="view_text"><textarea rows="20"
 							cols="100" title="내용" id="CONTENTS" name="CONTENTS"></textarea></td>
+				</tr>
+				<tr>
+					<th scope="row">작성자</th>
+					<td>${sessionScope.userName}</td>
 				</tr>
 			</tbody>
 		</table>
@@ -43,7 +48,7 @@
 		
 		function fn_openBoardList(){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value = '/sample/main.do' />");
+			comSubmit.setUrl("<c:url value = '/main/main.do' />");
 			comSubmit.submit();
 		}
 

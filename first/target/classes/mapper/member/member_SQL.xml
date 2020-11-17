@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+
+	<select id="memberList" resultType="first.member.vo.MemberVO">
+        SELECT 
+          user_id AS userId, 
+          user_name AS userName,
+          user_email AS userEmail,
+          user_regdate AS userRegdate,
+          userUpdatedate
+        FROM tbl_member
+        ORDER BY userName
+    </select>
+    
+    <insert id="insertMember">
+        INSERT INTO tbl_member
+            (user_id, user_pw, user_name, user_email, user_regdate, userUpdatedate)
+        VALUES 
+            (#{userId}, #{userPw}, #{userName}, #{userEmail}, sysdate(), sysdate()) 
+    </insert>
+    
+    <select id="memberView" resultType="first.member.vo.MemberVO">
+        SELECT 
+          user_id AS userId, 
+          user_name AS userName,
+          user_email AS userEmail,
+          user_regdate AS userRegdate,
+          userUpdatedate
+        FROM tbl_member
+        WHERE user_id = #{userId}
+    </select>
+    
+    <update id="updateMember">
+        update tbl_member
+        set 
+            user_pw = #{userPw}, 
+            user_name = #{userName},
+             user_email =  #{userEmail}, 
+             userUpdatedate = sysdate()
+         where user_id = #{userId}    
+    </update>
+    
+    <update id="deleteMember">
+        delete from tbl_member
+         where user_id = #{userId}    
+    </update>
+	
+	
+	
+	<select id="loginCheck" resultType="String">
+        SELECT user_name AS userName 
+        FROM tbl_member
+        WHERE user_id = #{userId} 
+        AND user_pw = #{userPw}
+    </select>
+    
+    <select id="viewMember" resultType="first.member.vo.MemberVO">
+        SELECT 
+            user_name AS userName,
+            user_id AS userId,
+            user_email AS userEmail,
+            user_regdate AS userRegdate
+        FROM tbl_member
+        WHERE user_id = #{userId} AND user_pw = #{userPw}
+    </select>
+
+
+</mapper>

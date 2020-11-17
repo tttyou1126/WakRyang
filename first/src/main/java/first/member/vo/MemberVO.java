@@ -4,6 +4,12 @@ import java.sql.Timestamp;
 
 public class MemberVO {
 	private String userId;
+	@Override
+	public String toString() {
+		return "MemberVO [userId=" + userId + ", userPw=" + userPw + ", userName=" + userName + ", userEmail="
+				+ userEmail + ", userRegdate=" + userRegdate + ", userUpdatedate=" + userUpdatedate + "]";
+	}
+
 	private String userPw;
 	private String userName;
 	private String userEmail;
@@ -58,10 +64,7 @@ public class MemberVO {
 		this.userUpdatedate = userUpdatedate;
 	}
 
-	@Override
-	public String toString() {
-		return "MemberVO [userId=" + userId + ", userPw=" + userPw + ", userName=" + userName + ", userEmail="
-				+ userEmail + ", userRegdate=" + userRegdate + ", userUpdatedate=" + userUpdatedate + "]";
-	}
+
+
 
 }
