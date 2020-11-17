@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -53,6 +54,24 @@ public class MemberDAOImpl implements MemberDAO{
 	public void deleteMember(String userId) {
 		// TODO Auto-generated method stub
 		sqlSession.delete("member.deleteMember", userId);
+	}
+
+	@Override
+	public boolean loginCheck(MemberVO vo) {
+		String name = sqlSession.selectOne("member.loginCheck", vo);
+        return (name == null) ? false : true;
+	}
+
+	@Override
+	public MemberVO viewMember(MemberVO vo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("member.viewMember", vo);
+	}
+
+	@Override
+	public void logout(HttpSession session) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

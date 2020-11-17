@@ -3,6 +3,7 @@ package first.member.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
@@ -10,7 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 
 import first.member.service.MemberService;
 import first.member.vo.MemberVO;
@@ -86,5 +89,38 @@ public class MemberController {
         //System.out.println("클릭한 아이디 확인 : "+userId);
         log.debug("삭제 원하는 아이디 : "+userId);
         return "redirect:/member/list.do";
+    }
+    
+    @RequestMapping("member/login.do")
+    public String login(){
+        return "main/loginScreen";  
+    }
+    
+    // 02. 로그인 처리
+    @RequestMapping("member/loginCheck.do")
+    public ModelAndView loginCheck(@ModelAttribute MemberVO vo, HttpSession session){
+        boolean result = memberService.loginCheck(vo, session);
+        ModelAndView mav = new ModelAndView();
+        
+        if (result == true) { // 로그인 성공
+            // main.jsp로 이동
+            mav.setViewName("redirect:/main/main.do");
+            mav.addObject("msg", "success");
+        } else {    // 로그인 실패
+            // login.jsp로 이동
+            mav.setViewName("main/loginScreen");
+            mav.addObject("msg", "failure");
+        }
+        return mav;
+    }
+    
+    // 03. 로그아웃 처리
+    @RequestMapping("member/logout.do")
+    public ModelAndView logout(HttpSession session){
+        memberService.logout(session);
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("main/loginScreen");
+        mav.addObject("msg", "logout");
+        return mav;
     }
 }

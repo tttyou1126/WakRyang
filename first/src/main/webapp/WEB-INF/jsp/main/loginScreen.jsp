@@ -39,15 +39,15 @@
 				<span class="login100-form-title p-b-41">
 					Account Login
 				</span>
-				<form class="login100-form validate-form p-b-33 p-t-5">
+				<form class="login100-form validate-form p-b-33 p-t-5" name="form1" method="post">
 
-					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="text" name="username" placeholder="User name">
+					<div class="wrap-input100 validate-input" data-validate = "Enter userId">
+						<input class="input100" type="text" name="userId" placeholder="User Id">
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="pass" placeholder="Password">
+						<input class="input100" type="password" name="userPw" placeholder="Password">
 						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
 					</div>
 
@@ -56,15 +56,26 @@
 							Register
 						</button>
 						&nbsp;&nbsp;
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" id="btnLogin">
 							Login
-						</button>
+						</button>			
 						<br/><br/><br/>
 						<button class="login100-form-btn" id="main">
 							Main
 						</button>
+						
 					</div>
-
+					<br/>
+						<c:if test="${msg == 'logout'}">
+							<div align="center" style="color: red">
+								로그아웃되었습니다.
+							</div>
+					    </c:if>	
+					    <c:if test="${msg == 'failure'}">
+					         <div align="center" style="color: red">
+					                        아이디 또는 비밀번호가 일치하지 않습니다.
+					         </div>
+					    </c:if>	
 				</form>
 			</div>
 		</div>
@@ -101,6 +112,27 @@
 			e.preventDefault(); 
 			fn_main(); 
 		});
+		
+		 $("#btnLogin").click(function(){
+	            // 태크.val() : 태그에 입력된 값
+	            // 태크.val("값") : 태그의 값을 변경 
+	            var userId = $("#userId").val();
+	            var userPw = $("#userPw").val();
+	            if(userId == ""){
+	                alert("아이디를 입력하세요.");
+	                $("#userId").focus(); // 입력포커스 이동
+	                return; // 함수 종료
+	            }
+	            if(userPw == ""){
+	                alert("아이디를 입력하세요.");
+	                $("#userPw").focus();
+	                return;
+	            }
+	            // 폼 내부의 데이터를 전송할 주소
+	            document.form1.action="${path}/member/loginCheck.do"
+	            // 제출
+	            document.form1.submit();
+	        });
 	});
 	
 	function fn_register(){ 

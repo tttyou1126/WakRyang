@@ -2,6 +2,8 @@ package first.member.dao;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import first.member.vo.MemberVO;
 
 public interface MemberDAO {
@@ -16,7 +18,11 @@ public interface MemberDAO {
 
 	void deleteMember(String userId);
 
+	boolean loginCheck(MemberVO vo);
 
+	MemberVO viewMember(MemberVO vo);
+
+	public void logout(HttpSession session);
 
 
 }

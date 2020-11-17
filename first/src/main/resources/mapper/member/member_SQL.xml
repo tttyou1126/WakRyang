@@ -47,6 +47,24 @@
          where user_id = #{userId}    
     </update>
 	
+	
+	
+	<select id="loginCheck" resultType="String">
+        SELECT user_name AS userName 
+        FROM tbl_member
+        WHERE user_id = #{userId} 
+        AND user_pw = #{userPw}
+    </select>
+    
+    <select id="viewMember" resultType="first.member.vo.MemberVO">
+        SELECT 
+            user_name AS userName,
+            user_id AS userId,
+            user_email AS userEmail,
+            user_regdate AS userRegdate
+        FROM tbl_member
+        WHERE user_id = #{userId} AND user_pw = #{userPw}
+    </select>
 
 
 </mapper>
