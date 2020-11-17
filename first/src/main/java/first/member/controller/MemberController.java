@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import first.member.service.MemberService;
 import first.member.vo.MemberVO;
@@ -59,4 +60,31 @@ public class MemberController {
         return "member/member_view";
     }
     
+    @RequestMapping("member/update.do")
+    public String memberUpdate(@ModelAttribute MemberVO vo){
+        memberService.updateMember(vo);
+        return "redirect:/member/list.do";
+    }
+    /*
+    @RequestMapping("member/delete.do")
+    public String memberDelete(@RequestParam String userId, @RequestParam String userPw, Model model){
+    	boolean result = memberService.checkPw(userId, userPw);
+        if(result){ // 비밀번호가 맞다면 삭제 처리후, 전체 회원 목록으로 리다이렉트
+            memberService.deleteMember(userId);
+            return "redirect:/member/list.do";
+        } else { // 비밀번호가 일치하지 않는다면, div에 불일치 문구 출력, viwe.jsp로 포워드
+            model.addAttribute("message", "비밀번호 불일치");
+            model.addAttribute("dto", memberService.viewMember(userId));
+            return "member/member_list";
+        }
+    }
+    */
+    
+    @RequestMapping("member/delete.do")
+    public String memberDelete(String userId){
+    	memberService.deleteMember(userId);
+        //System.out.println("클릭한 아이디 확인 : "+userId);
+        log.debug("삭제 원하는 아이디 : "+userId);
+        return "redirect:/member/list.do";
+    }
 }

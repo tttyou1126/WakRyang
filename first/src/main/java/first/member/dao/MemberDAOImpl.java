@@ -1,6 +1,8 @@
 package first.member.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -32,7 +34,7 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public void insertMember(MemberVO vo) {
 		// TODO Auto-generated method stub
-		sqlSession.selectList("member.insertMember", vo);
+		sqlSession.insert("member.insertMember", vo);
 	}
 
 	@Override
@@ -40,6 +42,19 @@ public class MemberDAOImpl implements MemberDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("member.memberView", userId);
 	}
+
+	@Override
+	public void updateMember(MemberVO vo) {
+		sqlSession.update("member.updateMember", vo);
+		
+	}
+
+	@Override
+	public void deleteMember(String userId) {
+		// TODO Auto-generated method stub
+		sqlSession.delete("member.deleteMember", userId);
+	}
+
 
 
 

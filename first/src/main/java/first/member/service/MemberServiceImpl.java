@@ -36,6 +36,20 @@ public class MemberServiceImpl implements MemberService {
 	        return memberDao.viewMember(userId);
 	    }
 
+	@Override
+	public void updateMember(MemberVO vo) {
+		memberDao.updateMember(vo);
+		
+	}
+
+	@Override
+	public void deleteMember(String userId) {
+		// TODO Auto-generated method stub
+		memberDao.deleteMember(userId);
+	}
+
+
+
 
 
 

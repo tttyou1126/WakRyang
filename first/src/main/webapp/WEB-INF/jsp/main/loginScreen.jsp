@@ -59,6 +59,10 @@
 						<button class="login100-form-btn">
 							Login
 						</button>
+						<br/><br/><br/>
+						<button class="login100-form-btn" id="main">
+							Main
+						</button>
 					</div>
 
 				</form>
@@ -93,11 +97,20 @@
 			e.preventDefault(); 
 			fn_register(); 
 		}); 
+		$("#main").on("click", function(e){
+			e.preventDefault(); 
+			fn_main(); 
+		});
 	});
 	
 	function fn_register(){ 
 		var comSubmit = new ComSubmit(); 
 		comSubmit.setUrl("<c:url value='/member/register.do' />"); 
+		comSubmit.submit(); 
+	} 
+	function fn_main(){ 
+		var comSubmit = new ComSubmit(); 
+		comSubmit.setUrl("<c:url value='/main/main.do' />"); 
 		comSubmit.submit(); 
 	} 
 	</script>	

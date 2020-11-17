@@ -13,7 +13,7 @@
                             <div class="card-header">Register</div>
                             <div class="card-body">
 
-                                <form class="form-horizontal" method="post" action="${path}/member/insert.do">
+                                <form name="form1" class="form-horizontal" method="post" action="${path}/member/insert.do">
 
                                     <div class="form-group">
                                         <label for="userName" class="cols-sm-2 control-label">Your Name</label>
@@ -38,7 +38,7 @@
                                         <div class="cols-sm-10">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" name="userId" id="userId" value="${dto.userId}" />
+                                                <input type="text" class="form-control" name="userId" id="userId" value="${dto.userId}" readonly="readonly" />
                                             </div>
                                         </div>
                                     </div>
@@ -61,7 +61,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Modify</button>
+                                        <button type="submit" id="modify" class="btn btn-primary btn-lg btn-block login-button">Modify</button>
                                     </div>
                                 </form>
                             </div>
@@ -70,3 +70,12 @@
                     </div>
                 </div>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#modify").on("click", function(e){ // 목록으로
+		document.form1.action = "${path}/member/update.do";
+        document.form1.submit();
+	});
+});	
+</script>

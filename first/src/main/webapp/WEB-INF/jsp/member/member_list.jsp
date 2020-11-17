@@ -12,13 +12,15 @@
     <button class="btn">Import</button>
     <button class="btn">Export</button>
 </div>
-<div class="well">
+<form name="form1" class="form-horizontal" method="post">
+<div class="well" >
     <table class="table">
         <tr>
 			<th>아이디</th>
 			<th>이름</th>
 			<th>이메일</th>
 			<th>회원가입일자</th>
+			<th>수정일자</th>
 		</tr>
 		<c:forEach var="row" items="${list}">
 			<tr>
@@ -26,14 +28,16 @@
 				<td>${row.userName}</td>
 				<td>${row.userEmail}</td>
 				<td>${row.userRegdate}</td>
+				<td>${row.userUpdatedate}</td>
 				<td>
 					<a href="${path}/member/view.do?userId=${row.userId}" name="modify"><i class="icon-pencil"></i></a>
-              		<a href="#myModal" name="delete" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+              		<a href="${path}/member/delete.do?userId=${row.userId}" id="delete" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
                 </td>
 			</tr>
 		</c:forEach>
     </table>
 </div>
+</form>
 <div class="pagination">
     <ul>
         <li><a href="#">Prev</a></li>
@@ -58,4 +62,17 @@
     </div>
 </div>
 
+
+
+<script>
+    $(document).ready(function(){
+        $("#delete").click(function(){
+            // 확인 대화상자 
+            if(confirm("삭제하시겠습니까?")){
+                document.form1.action = "${path}/member/delete.do";
+                document.form1.submit();
+            }
+        });
+    });
+</script>
 	

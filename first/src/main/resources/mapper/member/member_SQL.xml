@@ -8,7 +8,8 @@
           user_id AS userId, 
           user_name AS userName,
           user_email AS userEmail,
-          user_regdate AS userRegdate
+          user_regdate AS userRegdate,
+          userUpdatedate
         FROM tbl_member
         ORDER BY userName
     </select>
@@ -26,10 +27,26 @@
           user_name AS userName,
           user_email AS userEmail,
           user_regdate AS userRegdate,
-          user_regdate AS userUpdatedate
+          userUpdatedate
         FROM tbl_member
         WHERE user_id = #{userId}
     </select>
+    
+    <update id="updateMember">
+        update tbl_member
+        set 
+            user_pw = #{userPw}, 
+            user_name = #{userName},
+             user_email =  #{userEmail}, 
+             userUpdatedate = sysdate()
+         where user_id = #{userId}    
+    </update>
+    
+    <update id="deleteMember">
+        delete from tbl_member
+         where user_id = #{userId}    
+    </update>
+	
 
 
 </mapper>

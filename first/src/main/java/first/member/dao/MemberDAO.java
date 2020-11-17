@@ -12,6 +12,11 @@ public interface MemberDAO {
 
 	public MemberVO viewMember(String userId);
 
+	void updateMember(MemberVO vo);
+
+	void deleteMember(String userId);
+
+
 
 
 }
