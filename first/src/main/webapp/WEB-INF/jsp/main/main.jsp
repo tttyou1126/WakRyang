@@ -28,12 +28,17 @@ String msg = request.getParameter("msg");
 %>        
    
 <%
-if (msg.equals("success")) {
+if (msg == null) {
+%>	
+<ul class="navbar-nav">  <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="${path}/main/loginScreen.do" ><font size="6">Login</font></a> </li> </ul>
+<%
+} else if(msg.equals("success")){
 %>
 <h2>${sessionScope.userName}(${sessionScope.userId})님</h2>
-       <ul class="navbar-nav">  <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="${path}/member/logout.do" ><font size="6">Logout</font></a> </li> </ul> 	
-<%
-} else {
+<ul class="navbar-nav">  <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="${path}/member/logout.do" ><font size="6">Logout</font></a> </li> </ul> 
+       
+<%	
+}else {
 %>
 <ul class="navbar-nav">  <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="${path}/main/loginScreen.do" ><font size="6">Login</font></a> </li> </ul>
 <% } %>   
