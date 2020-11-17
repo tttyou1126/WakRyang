@@ -37,7 +37,7 @@
 	</c:otherwise>
 </c:choose>
 
- <!--
+<%--
 <%
 String msg = request.getParameter("msg");
 %>        
@@ -57,7 +57,7 @@ if (msg == null) {
 %>
 <ul class="navbar-nav">  <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="${path}/main/loginScreen.do" ><font size="6">Login</font></a> </li> </ul>
 <% } %>   
- -->
+--%>
     
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
                 <span class="d-block d-lg-none">Sun Jong Min</span>
