@@ -45,7 +45,7 @@
 	</form>
 	<a href="#this" class="btn" id="list">목록으로</a>
 	<a href="#this" class="btn" id="update">저장하기</a>
-	<a href="#this" class="btn" id="delete">삭제하기</a>
+	<a href="${path}/sample/deleteBoard.do?IDX=${dto.IDX}"  class="btn" id="delete">삭제하기</a>
 	<%@ include file="/WEB-INF/include/include-body.jspf"%>
 	<script type="text/javascript">
 	$(document).ready(function(){
@@ -59,11 +59,14 @@
 	        document.form1.submit();
 		});
 		
-		$("#delete").on("click", function(e){ //삭제하기 버튼
-			e.preventDefault(); 
-			fn_deleteBoard();
+		$("#delete").click(function(){
+            // 확인 대화상자 
+            if(confirm("삭제하시겠습니까?")){
+                document.form1.action = "${path}/sample/deleteBoard.do";
+                document.form1.submit();
+            }
 		}); 
-	}); 
+	});
 	
 	function fn_openBoardList(){ 
 		var comSubmit = new ComSubmit(); 
@@ -71,14 +74,6 @@
 		comSubmit.submit(); 
 	} 
 	
-	
-	
-	function fn_deleteBoard(){ 
-		var comSubmit = new ComSubmit(); 
-		comSubmit.setUrl("<c:url value='/sample/deleteBoard.do' />");
-		comSubmit.addParam("IDX", $("#IDX").val()); 
-		comSubmit.submit(); 
-	}
 	
 	</script>
 </body>
