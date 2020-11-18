@@ -15,10 +15,12 @@
         <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/css/main-styles.css" rel="stylesheet" />
+        
         <%@ include file="/WEB-INF/include/include-header.jspf"%>
         <c:set var="path" value="${pageContext.request.contextPath}"/>
     </head>
     <body id="page-top">
+
         <!-- Navigation-->
         
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">

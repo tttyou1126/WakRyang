@@ -4,21 +4,14 @@
 <mapper namespace="sample">
 
 	<select
-		id="selectBoardList"
-		parameterType="hashmap"
-		resultType="hashmap">
-		<![CDATA[
+		id="boardList" resultType="first.sample.vo.BoardVO">
 			SELECT IDX, TITLE, HIT_CNT, CREA_DTM, CREA_ID
 			FROM TB_BOARD 
 			WHERE DEL_GB = 'N'
 			ORDER BY IDX DESC
-		]]>
 	</select>
 
-	<insert
-		id="insertBoard"
-		parameterType="hashmap">
-		<![CDATA[
+	<insert id="insertBoard">
 			INSERT INTO TB_BOARD 
 			( TITLE, 
 			CONTENTS, 
@@ -34,50 +27,42 @@
 			SYSDATE(), 
 			#{CREA_ID}
 			)
-
-		]]>
 	</insert>
 
 	<update
-		id="updateHitCnt"
-		parameterType="hashmap"> 
-		<![CDATA[ 
+		id="updateHitCnt"> 
 			UPDATE TB_BOARD 
 			SET HIT_CNT = ifnull(HIT_CNT, 0) + 1 
 			WHERE IDX = #{IDX} 
-		]]>
 	</update>
 	
 	<select
-		id="selectBoardDetail"
-		parameterType="hashmap"
-		resultType="hashmap">
-		 <![CDATA[ 
+		id="selectBoardDetail" resultType="first.sample.vo.BoardVO">
 		 	SELECT IDX, HIT_CNT, CREA_ID, CREA_DTM, TITLE, CONTENTS 
 			 FROM TB_BOARD 
 			 WHERE IDX = #{IDX} 
-		 ]]>
+	</select>
+	
+	<select
+		id="UpdateBoardDetail" resultType="first.sample.vo.BoardVO">
+		 	SELECT IDX, HIT_CNT, CREA_ID, CREA_DTM, TITLE, CONTENTS 
+			 FROM TB_BOARD 
+			 WHERE IDX = #{iDX} 
 	</select>
 	
 	<update
-		id="updateBoard"
-		parameterType="hashmap"> 
-		<![CDATA[ 
+		id="updateBoard"> 
 			UPDATE TB_BOARD 
 			SET TITLE = #{TITLE},
 			    CONTENTS = #{CONTENTS}
 			WHERE IDX = #{IDX} 
-		]]>
 	</update>
 	
 	<delete
-		id="deleteBoard"
-		parameterType="hashmap"> 
-		<![CDATA[ 
+		id="deleteBoard">  
 			UPDATE TB_BOARD 
 			SET DEL_GB = 'Y'
 			WHERE IDX = #{IDX} 
-		]]>
 	</delete>
 
 
