@@ -91,9 +91,9 @@ to {
 		<div id="list">
 			<b>게시판 (전체 글: ${totalCount})</b>
 		</div>
-		<div id="write">
-			<a href="/bbs/writeForm.bbs?pageNum=${pageNum}">글쓰기</a>
-		</div>
+<c:if test="${not empty sessionScope.userName}"> 
+    <div id="write"> <a href="#this"  id="write"> 글쓰기</a> </div>
+</c:if>
 		<div>
 			<table class="table table-striped table-bordered table-hover">
 				<thead>
@@ -142,7 +142,6 @@ to {
 			
 				<br />
 
-	<div id="write"> <a href="#this" class="btn" id="write"> 글쓰기 </a> </div>
 
 	<%@ include file="/WEB-INF/include/include-body.jspf"%>
 	<script type="text/javascript">
