@@ -17,22 +17,22 @@
 		<tbody>
 			<tr>
 				<th scope="row">글 번호</th>
-				<td>${map.TITLE }</td>
+				<td>${dto.TITLE }</td>
 				<th scope="row">조회수</th>
-				<td>${map.HIT_CNT }</td>
+				<td>${dto.HIT_CNT }</td>
 			</tr>
 			<tr>
 				<th scope="row">작성자</th>
-				<td>${map.CREA_ID }</td>
+				<td>${dto.CREA_ID }</td>
 				<th scope="row">작성시간</th>
-				<td>${map.CREA_DTM }</td>
+				<td>${dto.CREA_DTM }</td>
 			</tr>
 			<tr>
 				<th scope="row">제목</th>
-				<td colspan="3">${map.TITLE }</td>
+				<td colspan="3">${dto.TITLE }</td>
 			</tr>
 			<tr>
-				<td colspan="4">${map.CONTENTS }</td>
+				<td colspan="4">${dto.CONTENTS }</td>
 			</tr>
 		</tbody>
 	</table>
@@ -54,14 +54,14 @@
 	}); 
 	function fn_openBoardList(){ 
 		var comSubmit = new ComSubmit(); 
-		comSubmit.setUrl("<c:url value='/sample/openBoardList.do' />"); 
+		comSubmit.setUrl("<c:url value='/main/main.do' />"); 
 		comSubmit.submit(); 
 	} 
 	
 	function fn_openBoardUpdate(){ 
-		var idx = "${map.IDX}"; 
+		var idx = "${dto.IDX}"; 
 		var comSubmit = new ComSubmit(); 
-		comSubmit.setUrl("<c:url value='/sample/openBoardUpdate.do' />"); 
+		comSubmit.setUrl("<c:url value='/sample/updateScreen.do' />"); 
 		comSubmit.addParam("IDX", idx); 
 		comSubmit.submit(); 
 	} 

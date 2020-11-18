@@ -2,7 +2,6 @@ package first.sample.controller;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.annotation.Resource;
@@ -16,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import first.common.common.CommandMap;
-import first.member.vo.MemberVO;
 import first.sample.service.SampleService;
+import first.sample.vo.BoardVO;
 
 @Controller
 public class SampleController {
@@ -25,12 +24,11 @@ public class SampleController {
 	@Resource(name = "sampleService")
 	private SampleService sampleService;
 
-	@RequestMapping(value = "/main/main.do")
-	public ModelAndView openSampleBoardList(Map<String, Object> commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("/main/main");
-		List<Map<String, Object>> list = sampleService.selectBoardList(commandMap);
-		mv.addObject("list", list);
-		return mv;
+	@RequestMapping("main/main.do")
+	public String openSampleBoardList(Model model) throws Exception {
+		List<BoardVO> list = sampleService.boardList();
+		model.addAttribute("list", list);
+		return "main/main";
 	}
 
 	@RequestMapping(value = "/sample/testMapArgumentResolver.do")
@@ -47,53 +45,42 @@ public class SampleController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/sample/openBoardWrite.do")
-	public ModelAndView openBoardWrite(CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("/sample/boardWrite");
-
-		return mv;
-	}
-
-	@RequestMapping(value = "/sample/insertBoard.do")
-	public ModelAndView insertBoard(CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("redirect:/main/main.do");
-
-		sampleService.insertBoard(commandMap.getMap());
-
-		return mv;
-	}
-
-	@RequestMapping(value = "/sample/openBoardDetail.do")
-	public ModelAndView openBoardDetail(CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("/sample/boardDetail");
-		Map<String, Object> map = sampleService.selectBoardDetail(commandMap.getMap());
-		mv.addObject("map", map);
-		return mv;
+	
+	@RequestMapping("sample/writeScreen.do")
+	public String writeBoardScreen() throws Exception {
+		return "sample/boardWrite";
+	}	
+	
+	@RequestMapping("sample/writeBoard.do")
+	public String writeBoard(@ModelAttribute BoardVO vo) throws Exception {
+		sampleService.writeBoard(vo);
+		return "redirect:/main/main.do";
+	}		
+	
+	@RequestMapping("sample/viewBoard.do")
+	public String viewBoard(int IDX, Model model) throws Exception {
+		model.addAttribute("dto", sampleService.viewBoard(IDX));
+		return "sample/boardDetail";
 	}
 	
-	@RequestMapping(value = "/sample/openBoardUpdate.do")
-	public ModelAndView openBoardUpdate(CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("/sample/boardUpdate");
-		Map<String, Object> map = sampleService.selectBoardDetail(commandMap.getMap());
-		mv.addObject("map", map);
-		return mv;
-	}
-
-	@RequestMapping(value = "/sample/updateBoard.do")
-	public ModelAndView updateBoard(CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("redirect:/sample/openBoardDetail.do");
-		sampleService.updateBoard(commandMap.getMap());
-		mv.addObject("IDX", commandMap.get("IDX"));
-		return mv;
-	}
+	@RequestMapping("sample/updateScreen.do")
+	public String updateBoardScreen(int IDX, Model model) throws Exception {
+		model.addAttribute("dto", sampleService.updateBoardScreen(IDX));
+		return "sample/boardUpdate";
+	}	
 	
-	@RequestMapping(value = "/sample/deleteBoard.do")
-	public ModelAndView deleteBoard(CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("redirect:/main/main.do");
-		sampleService.deleteBoard(commandMap.getMap());
-		return mv;
-	}
+	@RequestMapping("sample/updateBoard.do")
+	public String updateBoard(@ModelAttribute BoardVO vo) throws Exception {
+		sampleService.updateBoard(vo);
+		return "redirect:/main/main.do";
+	}	
 	
+	
+	@RequestMapping("sample/deleteBoard.do")
+	public String deleteBoard(int IDX) throws Exception {
+		sampleService.deleteBoard(IDX);
+		return "redirect:/main/main.do";
+	}		
 
    
 }

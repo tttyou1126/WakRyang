@@ -6,7 +6,7 @@
 <%@ include file="/WEB-INF/include/include-header.jspf"%>
 </head>
 <body>
-	<form id="frm">
+	<form name="form1" method="post">
 		<table class="board_view">
 			<colgroup>
 				<col width="15%" />
@@ -18,26 +18,26 @@
 			<tbody>
 				<tr>
 					<th scope="row">글 번호</th>
-					<td>${map.IDX } <input type="hidden" id="IDX" name="IDX"
-						value="${map.IDX }">
+					<td>${dto.IDX } <input type="hidden" id="IDX" name="IDX"
+						value="${dto.IDX }">
 					</td>
 					<th scope="row">조회수</th>
-					<td>${map.HIT_CNT }</td>
+					<td>${dto.HIT_CNT }</td>
 				</tr>
 				<tr>
 					<th scope="row">작성자</th>
-					<td>${map.CREA_ID }</td>
+					<td>${dto.CREA_ID }</td>
 					<th scope="row">작성시간</th>
-					<td>${map.CREA_DTM }</td>
+					<td>${dto.CREA_DTM }</td>
 				</tr>
 				<tr>
 					<th scope="row">제목</th>
 					<td colspan="3"><input type="text" id="TITLE" name="TITLE"
-						class="wdp_90" value="${map.TITLE }" /></td>
+						class="wdp_90" value="${dto.TITLE }" /></td>
 				</tr>
 				<tr>
 					<td colspan="4" class="view_text"><textarea rows="20"
-							cols="100" title="내용" id="CONTENTS" name="CONTENTS">${map.CONTENTS }</textarea>
+							cols="100" title="내용" id="CONTENTS" name="CONTENTS">${dto.CONTENTS }</textarea>
 					</td>
 				</tr>
 			</tbody>
@@ -54,10 +54,10 @@
 			fn_openBoardList(); 
 		}); 
 		
-		$("#update").on("click", function(e){ //저장하기 버튼
-			e.preventDefault(); 
-			fn_updateBoard();
-		}); 
+		$("#update").on("click", function(e){ // 목록으로
+			document.form1.action = "${path}/sample/updateBoard.do";
+	        document.form1.submit();
+		});
 		
 		$("#delete").on("click", function(e){ //삭제하기 버튼
 			e.preventDefault(); 
@@ -67,15 +67,11 @@
 	
 	function fn_openBoardList(){ 
 		var comSubmit = new ComSubmit(); 
-		comSubmit.setUrl("<c:url value='/sample/openBoardList.do' />"); 
+		comSubmit.setUrl("<c:url value='/main/main.do' />"); 
 		comSubmit.submit(); 
 	} 
 	
-	function fn_updateBoard(){ 
-		var comSubmit = new ComSubmit("frm");
-		comSubmit.setUrl("<c:url value='/sample/updateBoard.do' />"); 
-		comSubmit.submit(); 
-	} 
+	
 	
 	function fn_deleteBoard(){ 
 		var comSubmit = new ComSubmit(); 

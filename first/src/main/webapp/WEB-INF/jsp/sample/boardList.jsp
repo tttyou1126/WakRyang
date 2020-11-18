@@ -112,8 +112,8 @@ to {
 					<c:forEach var="row" items="${list }" varStatus="status">
 						<tr>
 							<td>${row.IDX}</td>
-							<td id="title" class="title"><c:if test="${row.depth > 0}"> &nbsp;&nbsp; </c:if>
-								<a href="#this" name="title">${row.TITLE}</a>
+							<td id="title" class="title">
+								<a href="${path}/sample/viewBoard.do?IDX=${row.IDX}" name="title">${row.TITLE}</a>
 								<c:if test="${row.HIT_CNT >= 20}">
 									<span class="hit">hit!</span>
 								</c:if>
@@ -151,25 +151,15 @@ to {
 				e.preventDefault();
 				fn_openBoardWrite();
 			});
-			
-			$("a[name='title']").on("click", function(e){  
-				e.preventDefault(); 
-				fn_openBoardDetail($(this)); 
-			}); 
+
 		});
 
 			function fn_openBoardWrite(){
 				var comSubmit = new ComSubmit();
-				comSubmit.setUrl("<c:url value = '/sample/openBoardWrite.do' />");
+				comSubmit.setUrl("<c:url value = '/sample/writeScreen.do' />");
 				comSubmit.submit();
 			}
 			
-			function fn_openBoardDetail(obj){
-				var comSubmit = new ComSubmit();
-				comSubmit.setUrl("<c:url value='/sample/openBoardDetail.do' />");
-				comSubmit.addParam("IDX", obj.parent().find("#IDX").val());
-				comSubmit.submit();
-			}
 
 	</script>
 		</div>

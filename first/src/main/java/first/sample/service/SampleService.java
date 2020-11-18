@@ -1,19 +1,23 @@
 package first.sample.service;
 
 import java.util.List;
-import java.util.Map;
+
+import first.sample.vo.BoardVO;
 
 public interface SampleService {
 
-	List<Map<String, Object>> selectBoardList(Map<String, Object> map) throws Exception;
+	List<BoardVO> boardList();
 
-	void insertBoard(Map<String, Object> map) throws Exception;
+	void writeBoard(BoardVO vo);
 
-	Map<String, Object> selectBoardDetail(Map<String, Object> map) throws Exception;
+	BoardVO viewBoard(int iDX);
 
-	void updateBoard(Map<String, Object> map) throws Exception;
+	void updateBoard(BoardVO vo);
 
-	void deleteBoard(Map<String, Object> map) throws Exception;
+	BoardVO updateBoardScreen(int iDX);
 
+	void deleteBoard(int iDX);
+
+	
 
 }

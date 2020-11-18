@@ -54,7 +54,7 @@
 
 		function fn_insertBoard(){
 			var comSubmit = new ComSubmit("frm");
-			comSubmit.setUrl("<c:url value = '/sample/insertBoard.do' />");
+			comSubmit.setUrl("<c:url value = '/sample/writeBoard.do' />");
 			comSubmit.submit();
 		}
 		

@@ -1,21 +1,15 @@
 package first.sample.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
-import first.common.dao.AbstractDAO;
+import first.sample.vo.BoardVO;
 
 @Repository("sampleDAO")
-public class SampleDAO extends AbstractDAO {
-
-	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> selectBoardList(Map<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
-		return (List<Map<String, Object>>) selectList("sample.selectBoardList", map);
-	}
-
+public interface SampleDAO {
+	
+/*
 	public void insertBoard(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		insert("sample.insertBoard", map);
@@ -41,5 +35,22 @@ public class SampleDAO extends AbstractDAO {
 		// TODO Auto-generated method stub
 		update("sample.deleteBoard", map);
 	}
+*/
+	public List<BoardVO> boardList();
+
+	public void writeBoard(BoardVO vo);
+
+	public BoardVO viewBoard(int IDX);
+
+	public void updateBoard(BoardVO vo);
+
+	public BoardVO updateScreenBoard(int iDX);
+
+	public void updateHitCnt(int iDX);
+
+	public void deleteBoard(int iDX);
+
+
+
 
 }
