@@ -142,7 +142,7 @@
 	} 
 	function fn_main(){ 
 		var comSubmit = new ComSubmit(); 
-		comSubmit.setUrl("<c:url value='/main/main.do' />"); 
+		comSubmit.setUrl("<c:url value='/home/home.do' />"); 
 		comSubmit.submit(); 
 	} 
 	</script>	
