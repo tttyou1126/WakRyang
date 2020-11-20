@@ -10,8 +10,12 @@ public class homeController {
     // MainService MainService;
 
     @RequestMapping("home/home.do") // 컨트롤러의 클래스를 불러올 url (별칭)
-    public String loginScreen(){
+    public String homeScreen(){
         return "home/home"; // jsp
     }
 
+    @RequestMapping("home/about.do") // 컨트롤러의 클래스를 불러올 url (별칭)
+    public String aboutScreen(){
+        return "Temporary/about"; // jsp
+    }
 }

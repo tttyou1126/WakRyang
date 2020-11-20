@@ -2,7 +2,12 @@
 <%@ include file="/WEB-INF/include/include-header.jspf"%>
                <!-- Bootstrap -->
 <link href="/css/bootstrap.min.css" rel="stylesheet">
+
 <style>
+body {
+	margin : 0;
+	padding : 0;
+}
 #container {
 	width: 70%;
 	margin: 0 auto; /* 가로로 중앙에 배치 */
@@ -17,20 +22,24 @@
 	text-align: right;
 } /* Bootstrap 수정 */
 .table>thead {
-	background-color: #b3c6ff;
+	background-color: #ffffff;
 }
 
 .table>thead>tr>th {
 	text-align: center;
+	color: black;
+	background-color: white;
 }
 
 
 .table-hover>tbody>tr:hover {
-	background-color: #e6ecff;
+	background-color: #ffffff;
 }
 
 .table>tbody>tr>td {
 	text-align: center;
+	color: black;
+	background-color: white;
 }
 
 .table>tbody>tr>#title {
@@ -76,7 +85,11 @@ to {
 }
 </style>
 </head>
+
 <body>
+<%@ include file="/WEB-INF/jsp/home/homeMenu.jsp"%>
+ 		
+		
 	<div id="container">
 		<div align="right">
 			<!-- Login 검증 -->
@@ -89,11 +102,11 @@ to {
 			</c:if>
 		</div>
 		<div id="list">
-			<b>게시판 (전체 글: ${totalCount})</b>
+			<b><font color="white"> 게시판 (전체 글: ${totalCount})</font></b>
 		</div>
-<c:if test="${not empty sessionScope.userName}"> 
-    <div id="write"> <a href="#this"  id="write"> 글쓰기</a> </div>
-</c:if>
+
+    <div id="write"> <a href="#this"  id="write"> <font color="white">글쓰기</font> </a></div>
+
 		<div>
 			<table class="table table-striped table-bordered table-hover">
 				<thead>
@@ -138,7 +151,7 @@ to {
 						</tbody>
 			</table>
 			<!-- Paging 처리 -->
-			<div id="paging">${pageCode}</div>
+			<div id="paging"><font color="white"> ${pageCode}</font></div>
 			
 				<br />
 
@@ -163,3 +176,5 @@ to {
 	</script>
 		</div>
 	</div>
+
+	</body>

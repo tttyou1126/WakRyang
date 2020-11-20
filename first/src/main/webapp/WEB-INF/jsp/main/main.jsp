@@ -20,6 +20,7 @@
         <c:set var="path" value="${pageContext.request.contextPath}"/>
     </head>
     <body id="page-top">
+    
 
         <!-- Navigation-->
         

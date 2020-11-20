@@ -4,16 +4,93 @@
 <html lang="ko">
 <head>
 <%@ include file="/WEB-INF/include/include-header.jspf"%>
+
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+#container {
+	width: 70%;
+	margin: 0 auto; /* 가로로 중앙에 배치 */
+	padding-top: 10%; /* 테두리와 내용 사이의 패딩 여백 */
+}
+
+#list {
+	text-align: center;
+}
+
+#write {
+	text-align: right;
+} /* Bootstrap 수정 */
+.table>thead {
+	background-color: #ffffff;
+}
+
+.table>tr>th {
+	text-align: center;
+	color: black;
+	background-color: white;
+}
+
+
+.table-hover>tbody>tr:hover {
+	background-color: #ffffff;
+}
+
+.table>tbody>tr>td {
+	text-align: center;
+	color: black;
+	background-color: white;
+}
+
+.table>tbody>tr>th {
+	text-align: center;
+	color: black;
+	background-color: white;
+}
+
+.table>tbody>tr>#title {
+	text-align: left;
+}
+
+
+@keyframes blink {
+	from {color: white;
+}
+
+30%
+{
+color
+
+
+:
+
+ 
+
+yellow
+
+
+;
+}
+to {
+	color: red;
+	font-weight: bold;
+}
+/* 0% {color:white;} 30% {color: yellow;} 100% {color:red; font-weight: bold;} */
+}
+</style>
 </head>
 <body>
-	<table class="board_view">
+<%@ include file="/WEB-INF/jsp/home/homeMenu.jsp"%>
+<div id="container">
+<font color ="white"><caption>게시글 상세</caption></font>
+	<table class="table table-striped table-bordered table-hover">
 		<colgroup>
 			<col width="15%" />
 			<col width="35%" />
 			<col width="15%" />
 			<col width="35%" />
 		</colgroup>
-		<caption>게시글 상세</caption>
+		
 		<tbody>
 			<tr>
 				<th scope="row">글 번호</th>
@@ -36,9 +113,12 @@
 			</tr>
 		</tbody>
 	</table>
+	
+	<div align="right">
 	<a href="#this" class="btn" id="list">목록으로</a>
 	<a href="#this" class="btn" id="update">수정하기</a>
-	
+	</div>
+	</div>
 	<%@ include file="/WEB-INF/include/include-body.jspf"%>
 	<script type="text/javascript"> 
 	$(document).ready(function(){
@@ -54,7 +134,7 @@
 	}); 
 	function fn_openBoardList(){ 
 		var comSubmit = new ComSubmit(); 
-		comSubmit.setUrl("<c:url value='/main/main.do' />"); 
+		comSubmit.setUrl("<c:url value='/sample/board.do' />"); 
 		comSubmit.submit(); 
 	} 
 	
