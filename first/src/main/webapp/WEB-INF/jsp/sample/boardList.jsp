@@ -4,6 +4,33 @@
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
+  #banner > .inner {
+    -moz-transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+    -ms-transform: scale(1.0);
+    transform: scale(1.0);
+    -moz-transition: opacity 1s ease, -moz-transform 1s ease;
+    -webkit-transition: opacity 1s ease, -webkit-transform 1s ease;
+    -ms-transition: opacity 1s ease, -ms-transform 1s ease;
+    transition: opacity 1s ease, transform 1s ease;
+    opacity: 1;
+    position: relative;
+    z-index: 3; }
+  #banner video {
+    -moz-transform: translateX(50%) translateY(50%);
+    -webkit-transform: translateX(50%) translateY(50%);
+    -ms-transform: translateX(50%) translateY(50%);
+    transform: translateX(50%) translateY(50%);
+    bottom: 30%;
+    height: auto;
+    min-height: 100%;
+    min-width: 100%;
+    overflow: hidden;
+    position: absolute;
+    right: 50%;
+    width: auto; }
+ 
+
 body {
 	margin : 0;
 	padding : 0;
@@ -89,6 +116,12 @@ to {
 <body>
 <%@ include file="/WEB-INF/jsp/home/homeMenu.jsp"%>
  		
+ 		
+			<div id="banner">
+				<div class="inner">
+
+		
+ 		
 <form name="form1" method="post" action="${path}/sample/board.do">		
 	<div id="container">
 		<div align="right">
@@ -171,6 +204,9 @@ to {
 </div>
 </div>
 	</form>
+					</div>
+				<video autoplay loop muted playsinline src="/images/banner.mp4"></video>
+			</div> 
 
 	<%@ include file="/WEB-INF/include/include-body.jspf"%>
 	<script type="text/javascript">

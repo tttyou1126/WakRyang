@@ -53,8 +53,8 @@
 
           <div class="image-wrap-2">
             <div class="image-info">
-              <h2 class="mb-3">Nature</h2>
-              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
+              <h2 class="mb-3">게시판</h2>
+              <a href="${path}/sample/board.do" class="btn btn-outline-white py-2 px-4">바로가기</a>
             </div>
             <img src="/images/home/img_1.jpg" alt="Image" class="img-fluid">
           </div>
