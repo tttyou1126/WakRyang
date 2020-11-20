@@ -173,7 +173,7 @@ to {
 	<%@ include file="/WEB-INF/include/include-body.jspf"%>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$("#write").on("click", function(e){ // 목록으로
+			$("#write").on("click", function(e){ 
 				e.preventDefault();
 				fn_openBoardWrite();
 			});

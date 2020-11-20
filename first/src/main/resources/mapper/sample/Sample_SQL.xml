@@ -69,7 +69,13 @@
 			 FROM TB_BOARD 
 			 WHERE IDX = #{IDX} 
 	</select>
-	
+
+	<select
+		id="UpdateBoardDetail" resultType="first.sample.vo.BoardVO">
+		 	SELECT IDX, HIT_CNT, CREA_ID, CREA_DTM, TITLE, CONTENTS 
+			 FROM TB_BOARD 
+			 WHERE IDX = #{iDX} 
+	</select>	
 	
 	<update
 		id="updateBoard"> 
