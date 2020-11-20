@@ -89,7 +89,7 @@ to {
 <body>
 <%@ include file="/WEB-INF/jsp/home/homeMenu.jsp"%>
  		
-		
+<form name="form1" method="post" action="${path}/sample/board.do">		
 	<div id="container">
 		<div align="right">
 			<!-- Login 검증 -->
@@ -104,6 +104,20 @@ to {
 		<div id="list">
 			<b><font color="white"> 게시판 (전체 글: ${totalCount})</font></b>
 		</div>
+		
+		
+		
+	    <select name="searchOption">
+            <!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
+            <option value="all" <c:out value="${map.searchOption == 'all'?'selected':''}"/> >제목+이름+제목</option>
+            <option value="CREA_ID" <c:out value="${map.searchOption == 'CREA_ID'?'selected':''}"/> >이름</option>
+            <option value="CONTENTS" <c:out value="${map.searchOption == 'CONTENTS'?'selected':''}"/> >내용</option>
+            <option value="TITLE" <c:out value="${map.searchOption == 'TITLE'?'selected':''}"/> >제목</option>
+        </select>
+        <input name="keyword" value=${map.keyword}>	
+		
+		<input type="submit" name="test" value="조회">
+		
 
     <div id="write"> <a href="#this"  id="write"> <font color="white">글쓰기</font> </a></div>
 
@@ -163,7 +177,6 @@ to {
 				e.preventDefault();
 				fn_openBoardWrite();
 			});
-
 		});
 
 			function fn_openBoardWrite(){
@@ -176,5 +189,6 @@ to {
 	</script>
 		</div>
 	</div>
+	</form>
 
 	</body>

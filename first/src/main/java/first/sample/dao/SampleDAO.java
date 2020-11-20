@@ -36,7 +36,7 @@ public interface SampleDAO {
 		update("sample.deleteBoard", map);
 	}
 */
-	public List<BoardVO> boardList();
+	public List<BoardVO> boardList(String searchOption, String keyword);
 
 	public void writeBoard(BoardVO vo);
 
@@ -49,6 +49,8 @@ public interface SampleDAO {
 	public void updateHitCnt(int iDX);
 
 	public void deleteBoard(int iDX);
+
+	public int countArticle(String searchOption, String keyword);
 
 
 

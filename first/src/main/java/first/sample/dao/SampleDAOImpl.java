@@ -1,6 +1,8 @@
 package first.sample.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -20,12 +22,32 @@ public class SampleDAOImpl implements SampleDAO {
     // try catch문, finally문, 객체를 close할 필요가 없어졌다.
 	@Inject
 	SqlSession sqlSession;
+	
+	@Override
+	public List<BoardVO> boardList(String searchOption, String keyword) {
+		   // 검색옵션, 키워드 맵에 저장
+	    Map<String, String> map = new HashMap<String, String>();
+	    map.put("searchOption", searchOption);
+	    map.put("keyword", keyword);
+	    return sqlSession.selectList("sample.boardList", map);
+	}
 
+	@Override
+	public int countArticle(String searchOption, String keyword) {
+	    // 검색옵션, 키워드 맵에 저장
+	    Map<String, String> map = new HashMap<String, String>();
+	    map.put("searchOption", searchOption);
+	    map.put("keyword", keyword);
+	    return 1; // sjm 수정
+	}	
+	
+/*
 	public List<BoardVO> boardList() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("sample.boardList");
 	}
-
+*/
+	
 	@Override
 	public void writeBoard(BoardVO vo) {
 		sqlSession.insert("sample.insertBoard", vo);
@@ -60,6 +82,8 @@ public class SampleDAOImpl implements SampleDAO {
 		sqlSession.delete("sample.deleteBoard", iDX);
 		
 	}
+
+
 
 
 }

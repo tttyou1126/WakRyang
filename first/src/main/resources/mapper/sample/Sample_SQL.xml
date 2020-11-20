@@ -7,9 +7,36 @@
 		id="boardList" resultType="first.sample.vo.BoardVO">
 			SELECT IDX, TITLE, HIT_CNT, CREA_DTM, CREA_ID
 			FROM TB_BOARD 
-			WHERE DEL_GB = 'N'
+			<!-- WHERE절을 include 태그로 삽입 -->
+    		<include refid="search"></include>
+			and DEL_GB = 'N'
 			ORDER BY IDX DESC
 	</select>
+
+<!-- sql code 조각 -->
+<!-- 반복되는 sql의 일부를 sql태그를 이용하여 따로 빼둘수 있다. -->
+<sql id="search">
+    <choose>
+        <!-- 검색옵션이 전체 검색일 경우 -->
+        <when test="searchOption == 'all'">
+            WHERE CREA_ID like '%${keyword}%'
+            OR CONTENTS like '%${keyword}%'
+            OR TITLE like '%${keyword}%'
+        </when>
+        <!-- 전체 검색이 아닐 경우 -->
+        <otherwise>
+            WHERE ${searchOption} like '%${keyword}%'
+        </otherwise>
+    </choose>
+</sql>	
+
+<!--  01_02. 게시글 레코드 갯수
+<select id="countArticle" resultType="int">
+    SELECT COUNT(*) FROM TB_BOARD
+    WHERE절을 include 태그로 삽입
+    <include refid="search"></include>
+</select> -->
+
 
 	<insert id="insertBoard">
 			INSERT INTO TB_BOARD 
@@ -43,12 +70,6 @@
 			 WHERE IDX = #{IDX} 
 	</select>
 	
-	<select
-		id="UpdateBoardDetail" resultType="first.sample.vo.BoardVO">
-		 	SELECT IDX, HIT_CNT, CREA_ID, CREA_DTM, TITLE, CONTENTS 
-			 FROM TB_BOARD 
-			 WHERE IDX = #{iDX} 
-	</select>
 	
 	<update
 		id="updateBoard"> 

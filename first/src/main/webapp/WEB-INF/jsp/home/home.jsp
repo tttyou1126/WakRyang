@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <head>
-  <title>Photosen &mdash; Colorlib Website Template</title>
+  <title> Sun </title>
+  <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico" />
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 

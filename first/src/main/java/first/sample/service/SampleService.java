@@ -6,7 +6,7 @@ import first.sample.vo.BoardVO;
 
 public interface SampleService {
 
-	List<BoardVO> boardList();
+	public List<BoardVO> boardList(String searchOption, String keyword);
 
 	void writeBoard(BoardVO vo);
 
@@ -17,6 +17,8 @@ public interface SampleService {
 	BoardVO updateBoardScreen(int iDX);
 
 	void deleteBoard(int iDX);
+
+	public int countArticle(String searchOption, String keyword);
 
 	
 

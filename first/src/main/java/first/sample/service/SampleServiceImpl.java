@@ -18,13 +18,24 @@ public class SampleServiceImpl implements SampleService {
 	@Inject
 	SampleDAO sampleDAO;
 
+	@Override
+	public List<BoardVO> boardList(String searchOption, String keyword) {
+		return sampleDAO.boardList(searchOption, keyword);
+	}
+
+
+	@Override
+	public int countArticle(String searchOption, String keyword) {
+		return sampleDAO.countArticle(searchOption, keyword);
+	}	
 	
+	/*
 	@Override
 	public List<BoardVO> boardList() {
 		// TODO Auto-generated method stub
 		return sampleDAO.boardList();
 	}
-
+*/
 
 	@Override
 	public void writeBoard(BoardVO vo) {
@@ -60,6 +71,9 @@ public class SampleServiceImpl implements SampleService {
 		sampleDAO.deleteBoard(IDX);
 		
 	}
+
+
+
 	
 
 

@@ -1,7 +1,9 @@
 package first.sample.controller;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.annotation.Resource;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import first.common.common.CommandMap;
@@ -23,20 +26,14 @@ public class SampleController {
 	Log log = LogFactory.getLog(this.getClass());
 	@Resource(name = "sampleService")
 	private SampleService sampleService;
-	
+	/*
 	@RequestMapping("main/main.do")
 	public String openSampleBoardList1(Model model) throws Exception {
 		List<BoardVO> list = sampleService.boardList();
 		model.addAttribute("list", list);
 		return "main/main";
 	}
-	
-	@RequestMapping("sample/board.do")
-	public String openSampleBoardList(Model model) throws Exception {
-		List<BoardVO> list = sampleService.boardList();
-		model.addAttribute("list", list);
-		return "sample/boardList";
-	}	
+	*/
 	
 	/*
 	@RequestMapping("main/main.do")
@@ -49,6 +46,40 @@ public class SampleController {
         return mav; // list.jsp로 List가 전달된다.
 	}
 	*/
+	
+	/*
+	@RequestMapping("sample/board.do")
+	public String openSampleBoardList(Model model) throws Exception {
+		List<BoardVO> list = sampleService.boardList();
+		model.addAttribute("list", list);
+		return "sample/boardList";
+	}	
+	*/
+
+	@RequestMapping("sample/board.do")
+	public ModelAndView BoardList(@RequestParam(defaultValue="title") String searchOption,
+            @RequestParam(defaultValue="") String keyword) throws Exception {
+	    // 레코드의 갯수
+	    int count = sampleService.countArticle(searchOption, keyword);
+		
+		List<BoardVO> list = sampleService.boardList(searchOption, keyword);
+		ModelAndView mav = new ModelAndView();
+	    /*mav.addObject("list", list); // 데이터를 저장
+	    mav.addObject("count", count);
+	    mav.addObject("searchOption", searchOption);
+	    mav.addObject("keyword", keyword);*/
+	    // 데이터를 맵에 저장
+	    Map<String, Object> map = new HashMap<String, Object>();
+	    map.put("list", list); // list
+	    map.put("count", count); // 레코드의 갯수
+	    map.put("searchOption", searchOption); // 검색옵션
+	    map.put("keyword", keyword); // 검색키워드
+	    mav.addObject("list", list); // 맵에 저장된 데이터를 mav에 저장
+	    mav.setViewName("sample/boardList"); // 뷰를 list.jsp로 설정
+	    return mav; // list.jsp로 List가 전달된다.
+	}	
+	
+
 	
 	@RequestMapping(value = "/sample/testMapArgumentResolver.do")
 	public ModelAndView testMapArgumentResolver(CommandMap commandMap) throws Exception {
