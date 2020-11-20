@@ -168,7 +168,9 @@ to {
 			<div id="paging"><font color="white"> ${pageCode}</font></div>
 			
 				<br />
-
+</div>
+</div>
+	</form>
 
 	<%@ include file="/WEB-INF/include/include-body.jspf"%>
 	<script type="text/javascript">
@@ -187,8 +189,7 @@ to {
 			
 
 	</script>
-		</div>
-	</div>
-	</form>
+		
+	
 
 	</body>

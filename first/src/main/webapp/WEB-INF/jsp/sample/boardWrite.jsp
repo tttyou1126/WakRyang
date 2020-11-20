@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ko">
 <head>
 <%@ include file="/WEB-INF/include/include-header.jspf"%>
 
@@ -110,6 +109,7 @@ to {
 		<a href="#this"  id="list"><font color = "white">목록으로</font></a>
 		</div>
 	</div>
+	</form>
 	
 	<script type="text/javascript">
 		$(document).ready(function() {
