@@ -3,6 +3,7 @@
                <!-- Bootstrap -->
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 
+
 <style>
   #banner > .inner {
     -moz-transform: scale(1.0);
@@ -135,24 +136,24 @@ to {
 			</c:if>
 		</div>
 		<div id="list">
-			<b><font color="white"> 게시판 (전체 글: ${totalCount})</font></b>
+			<b><span style="background-color:#000000"><font color="WHITE" style="font-weight:bolder"> 게시판 (전체 글: ${count})</font></span></b>
 		</div>
 		
 		
 		
 	    <select name="searchOption">
             <!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
-            <option value="all" <c:out value="${map.searchOption == 'all'?'selected':''}"/> >제목+이름+제목</option>
-            <option value="CREA_ID" <c:out value="${map.searchOption == 'CREA_ID'?'selected':''}"/> >이름</option>
-            <option value="CONTENTS" <c:out value="${map.searchOption == 'CONTENTS'?'selected':''}"/> >내용</option>
-            <option value="TITLE" <c:out value="${map.searchOption == 'TITLE'?'selected':''}"/> >제목</option>
+            <option value="all" <c:out value="${searchOption == 'all'?'selected':''}"/> >제목+ID+제목</option>
+            <option value="CREA_ID" <c:out value="${searchOption == 'CREA_ID'?'selected':''}"/> >ID</option>
+            <option value="CONTENTS" <c:out value="${searchOption == 'CONTENTS'?'selected':''}"/> >내용</option>
+            <option value="TITLE" <c:out value="${searchOption == 'TITLE'?'selected':''}"/> >제목</option>
         </select>
-        <input name="keyword" value=${map.keyword}>	
+        <input name="keyword" value=${keyword}>	
 		
 		<input type="submit" name="test" value="조회">
 		
 
-    <div id="write"> <a href="#this"  id="write"> <font color="white">글쓰기</font> </a></div>
+    <div id="write"> <a href="#this"  id="write"> <span style="background-color:#000000"><font color="WHITE" style="font-weight:bolder">글쓰기</font></span> </a></div>
 
 		<div>
 			<table class="table table-striped table-bordered table-hover">

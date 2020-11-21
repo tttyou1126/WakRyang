@@ -30,12 +30,10 @@
     </choose>
 </sql>	
 
-<!--  01_02. 게시글 레코드 갯수
 <select id="countArticle" resultType="int">
     SELECT COUNT(*) FROM TB_BOARD
-    WHERE절을 include 태그로 삽입
     <include refid="search"></include>
-</select> -->
+</select> 
 
 
 	<insert id="insertBoard">

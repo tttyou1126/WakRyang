@@ -9,7 +9,7 @@ public class homeController {
 	// @Inject
     // MainService MainService;
 
-    @RequestMapping("home/home.do") // 컨트롤러의 클래스를 불러올 url (별칭)
+    @RequestMapping("home/home.do") // 컨트롤러의 클래스를 불러올 url (별칭) home/home.do home/home /home/home.do /home/home 다 됨
     public String homeScreen(){
         return "home/home"; // jsp
     }

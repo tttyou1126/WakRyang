@@ -63,17 +63,22 @@ public class SampleController {
 	    int count = sampleService.countArticle(searchOption, keyword);
 		
 		List<BoardVO> list = sampleService.boardList(searchOption, keyword);
-		ModelAndView mav = new ModelAndView();
-	    /*mav.addObject("list", list); // 데이터를 저장
-	    mav.addObject("count", count);
-	    mav.addObject("searchOption", searchOption);
-	    mav.addObject("keyword", keyword);*/
+		
 	    // 데이터를 맵에 저장
-	    Map<String, Object> map = new HashMap<String, Object>();
+	    /*
+		Map<String, Object> map = new HashMap<String, Object>();
 	    map.put("list", list); // list
 	    map.put("count", count); // 레코드의 갯수
 	    map.put("searchOption", searchOption); // 검색옵션
 	    map.put("keyword", keyword); // 검색키워드
+	    */
+		
+		ModelAndView mav = new ModelAndView();
+		
+	    mav.addObject("list", list); // 데이터를 저장
+	    mav.addObject("count", count);
+	    mav.addObject("searchOption", searchOption);
+	    mav.addObject("keyword", keyword);
 	    mav.addObject("list", list); // 맵에 저장된 데이터를 mav에 저장
 	    mav.setViewName("sample/boardList"); // 뷰를 list.jsp로 설정
 	    return mav; // list.jsp로 List가 전달된다.
@@ -98,7 +103,7 @@ public class SampleController {
 	
 	@RequestMapping("sample/writeScreen.do")
 	public String writeBoardScreen() throws Exception {
-		return "sample/boardWrite";
+		return "sample/boardWrite"; // /sample/boardWrite도 됨
 	}	
 	
 	@RequestMapping("sample/writeBoard.do")

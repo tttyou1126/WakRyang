@@ -38,7 +38,7 @@ public class SampleDAOImpl implements SampleDAO {
 	    Map<String, String> map = new HashMap<String, String>();
 	    map.put("searchOption", searchOption);
 	    map.put("keyword", keyword);
-	    return 1; // sjm 수정
+	    return sqlSession.selectOne("sample.countArticle", map);
 	}	
 	
 /*
