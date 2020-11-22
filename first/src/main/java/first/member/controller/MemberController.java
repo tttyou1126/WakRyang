@@ -1,6 +1,8 @@
 package first.member.controller;
  
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -11,6 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import first.member.service.MemberService;
@@ -121,4 +126,26 @@ public class MemberController {
         mav.addObject("msg", "logout");
         return mav;
     }
+    
+    @RequestMapping(value = "member/checkSignup.do", method = RequestMethod.POST)
+	public @ResponseBody String AjaxView(@RequestParam("id") String id){
+		String str = "";
+		int idcheck = memberService.idCheck(id);
+		if(idcheck==1){ //이미 존재하는 계정
+			str = "NO";	
+		}else{	//사용 가능한 계정
+			str = "YES";	
+		}
+		if(id == "") {
+			str = "NULL";
+		}
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+	    map.put("idcheck", str); // list
+
+		return str;
+		
+		
+	}
+
 }

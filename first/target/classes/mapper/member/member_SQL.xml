@@ -65,6 +65,12 @@
         FROM tbl_member
         WHERE user_id = #{userId} AND user_pw = #{userPw}
     </select>
+    
+    <select id="idCheck" resultType="int">
+        SELECT count(*)
+        FROM tbl_member
+        WHERE user_id = #{id}
+    </select>
 
 
 </mapper>

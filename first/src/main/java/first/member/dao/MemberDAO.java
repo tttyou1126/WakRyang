@@ -24,5 +24,7 @@ public interface MemberDAO {
 
 	public void logout(HttpSession session);
 
+	int idCheck(String id);
+
 
 }

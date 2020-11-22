@@ -76,6 +76,12 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.viewMember(vo);
 	}
 
+	@Override
+	public int idCheck(String id) {
+		// TODO Auto-generated method stub
+		return memberDao.idCheck(id);
+	}
+
 
 
 

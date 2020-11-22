@@ -13,7 +13,7 @@
                             <div class="card-header">Register</div>
                             <div class="card-body">
 
-                                <form class="form-horizontal" method="post" action="${path}/member/insert.do">
+                                <form name="form1" class="form-horizontal" method="post" >
 
                                     <div class="form-group">
                                         <label for="userName" class="cols-sm-2 control-label">Your Name</label>
@@ -61,11 +61,12 @@
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block login-button" id="register">Register</button>
                                     </div>
                                     <div class="login-register">
-                                        <a href="index.php">Login</a>
+                                        <a href="${path}/main/loginScreen.do">Login</a>
                                     </div>
+                                    <input type="hidden" id="checkId" value="">
                                 </form>
                             </div>
 
@@ -73,3 +74,73 @@
                     </div>
                 </div>
 </div>
+
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#register").on("click", function(e){
+			var pw = $("#userPw").val();
+            var pwConfirm = $("#confirm").val();
+            var checkId = $('#checkId').val();
+            if(pw != pwConfirm){
+                alert("비밀번호가 서로 다릅니다.");
+                $("#userPw").focus(); // 입력포커스 이동
+                return false; // 함수 종료
+            }
+            if(checkId=="NULL"){
+            	alert("아이디를 입력해주세요.");
+                  $('#id').val('');
+                  $('#id').focus();
+                  return false;
+            }
+            if(checkId=="NO"){
+            	alert("중복된 아이디입니다.");
+                  $('#id').val('');
+                  $('#id').focus();
+                  return false;
+            }
+
+            document.form1.action="${path}/member/insert.do"
+            document.form1.submit();
+            
+		});
+		
+		//아이디 중복체크
+	    $('#userId').blur(function(){
+			var checkId = "";
+	        $.ajax({
+		     type:"POST",
+		     url:"checkSignup.do",
+		     async:false,
+		     data:{
+		            "id":$('#userId').val()
+		     },
+		     success:function(data){	//data : checkSignup에서 넘겨준 결과값
+		    	 checkId = data;
+		            if($.trim(data)=="YES"){
+		             if($('#id').val()!=''){ 
+		               	alert("사용가능한 아이디입니다.");
+		               }
+		           	}else if($.trim(data)=="NO"){
+		               if($('#id').val()!=''){
+		                  alert("중복된 아이디입니다.");
+		                  $('#id').val('');
+		                  $('#id').focus();
+		               }
+		            }else{
+		            	alert("아이디를 입력해주세요.");
+		                  $('#id').val('');
+		                  $('#id').focus();
+		            }
+		         }
+		    }) 
+		    $('#checkId').val(checkId);
+	     });
+		
+	});
+
+
+	
+
+</script>

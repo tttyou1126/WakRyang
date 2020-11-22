@@ -23,6 +23,8 @@ public interface MemberService {
 	void logout(HttpSession session);
 	
 	public MemberVO viewMember(MemberVO vo);
+
+	int idCheck(String id);
 	
 
 
