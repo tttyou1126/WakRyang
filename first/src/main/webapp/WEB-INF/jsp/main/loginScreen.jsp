@@ -52,16 +52,16 @@
 					</div>
 
 					<div class="container-login100-form-btn m-t-32">
-						<button class="login100-form-btn" id="register">
-							Register
-						</button>
-						&nbsp;&nbsp;
 						<button class="login100-form-btn" id="btnLogin">
-							Login
-						</button>			
+							로그인
+						</button>	
+						&nbsp;&nbsp;
+						<button class="login100-form-btn" id="register">
+							회원가입
+						</button>
 						<br/><br/><br/>
 						<button class="login100-form-btn" id="main">
-							Main
+							메인으로
 						</button>
 						
 					</div>
@@ -142,7 +142,7 @@
 	} 
 	function fn_main(){ 
 		var comSubmit = new ComSubmit(); 
-		comSubmit.setUrl("<c:url value='/home/home.do' />"); 
+		comSubmit.setUrl("<c:url value='/home/sunhome.do' />"); 
 		comSubmit.submit(); 
 	} 
 	</script>	

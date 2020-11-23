@@ -16,9 +16,9 @@
     
     <insert id="insertMember">
         INSERT INTO tbl_member
-            (user_id, user_pw, user_name, user_email, user_regdate, userUpdatedate)
+            (user_id, user_pw, user_name, user_email, user_authority, user_regdate, userUpdatedate)
         VALUES 
-            (#{userId}, #{userPw}, #{userName}, #{userEmail}, sysdate(), sysdate()) 
+            (#{userId}, #{userPw}, #{userName}, #{userEmail}, "USER", sysdate(), sysdate()) 
     </insert>
     
     <select id="memberView" resultType="first.member.vo.MemberVO">

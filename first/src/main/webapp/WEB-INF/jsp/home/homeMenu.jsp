@@ -28,7 +28,7 @@
         <div class="row align-items-center">
         
  <div class="col-6 col-xl-2" >       
-<h1 class="mb-0"><a href="${path}/home/home.do" class="text-White h2 mb-0">${sessionScope.userName}</a></h1>
+<a href="${path}/home/sunhome.do" class="text-White h2 mb-0">${sessionScope.userName}</a>
 </div>
 
 
@@ -36,8 +36,8 @@
             <nav class="site-navigation position-relative text-right text-lg-center" role="navigation">
 
               <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
-                <li class="active"><a href="${path}/home/home.do">Home</a></li>
-                <li><a href="${path}/sample/board.do">Board</a></li>
+                <li class="active"><a href="${path}/home/sunhome.do">메인</a></li>
+                <li><a href="${path}/sample/board.do">게시판</a></li>
                 <li class="has-children">
                   <a href="single.html">Gallery</a>
                   <ul class="dropdown">
@@ -61,6 +61,11 @@
                 <li><a href="services.html">Services</a></li>
                 <li><a href="${path}/home/about.do">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                
+				<c:if test="${not empty sessionScope.userName}">
+					<li><a href="${path}/member/list.do">회원관리</a></li>	
+				</c:if>			
+						
               </ul>
             </nav>
           </div>
@@ -69,13 +74,13 @@
 <div class="col-6 col-xl-2 text-right" >         
 <c:choose>
 	<c:when test="${empty sessionScope.userName}"> 
-		<ul class="navbar-nav">  <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="${path}/main/loginScreen.do" ><font size="6">Login</font></a> </li> </ul>
+		<ul class="navbar-nav">  <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="${path}/main/loginScreen.do" ><font size="6">로그인</font></a> </li> </ul>
 	</c:when>
 	<c:when test="${not empty sessionScope.userName}"> 
-		<ul class="navbar-nav">  <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="${path}/member/logout.do" ><font size="6">Logout</font></a> </li> </ul>	
+		<ul class="navbar-nav">  <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="${path}/member/logout.do" ><font size="6">로그아웃</font></a> </li> </ul>	
 	</c:when>
 	<c:otherwise>
-		<ul class="navbar-nav">  <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="${path}/main/loginScreen.do" ><font size="6">Login</font></a> </li> </ul>
+		<ul class="navbar-nav">  <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="${path}/main/loginScreen.do" ><font size="6">로그인</font></a> </li> </ul>
 	</c:otherwise>
 </c:choose>
 </div>

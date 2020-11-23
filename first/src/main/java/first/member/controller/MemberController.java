@@ -107,7 +107,7 @@ public class MemberController {
         
         if (result == true) { // 로그인 성공
             // main.jsp로 이동
-            mav.setViewName("redirect:/home/home.do");
+            mav.setViewName("redirect:/home/sunhome.do");
             mav.addObject("msg", "success");
         } else {    // 로그인 실패
             // login.jsp로 이동
