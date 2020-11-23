@@ -6,21 +6,93 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <%@ include file="/WEB-INF/include/include-header.jspf"%>
 <!------ Include the above in your HEAD tag ---------->
+<style>
+  #banner > .inner {
+    -moz-transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+    -ms-transform: scale(1.0);
+    transform: scale(1.0);
+    -moz-transition: opacity 1s ease, -moz-transform 1s ease;
+    -webkit-transition: opacity 1s ease, -webkit-transform 1s ease;
+    -ms-transition: opacity 1s ease, -ms-transform 1s ease;
+    transition: opacity 1s ease, transform 1s ease;
+    opacity: 1;
+    position: relative;
+    z-index: 3; }
+  #banner video {
+    -moz-transform: translateX(50%) translateY(50%);
+    -webkit-transform: translateX(50%) translateY(50%);
+    -ms-transform: translateX(50%) translateY(50%);
+    transform: translateX(50%) translateY(50%);
+    bottom: 30%;
+    height: auto;
+    min-height: 100%;
+    min-width: 100%;
+    overflow: hidden;
+    position: absolute;
+    right: 50%;
+    width: auto; }
+    
+body {
+	margin : 0;
+	padding : 0;
+}
+#container {
+	width: 70%;
+	margin: 0 auto; /* 가로로 중앙에 배치 */
+	padding-top: 10%; /* 테두리와 내용 사이의 패딩 여백 */
+}
 
-<div class="btn-toolbar">
-    <button class="btn btn-primary">New User</button>
-    <button class="btn">Import</button>
-    <button class="btn">Export</button>
-</div>
-<form name="form1" class="form-horizontal" method="post">
-<div class="well" >
-    <table class="table">
+#list {
+	text-align: center;
+}
+
+#write {
+	text-align: right;
+} /* Bootstrap 수정 */
+.table>thead {
+	background-color: #ffffff;
+}
+
+.table>thead>tr>th {
+	text-align: center;
+	color: black;
+	background-color: white;
+}
+
+
+.table-hover>tbody>tr:hover {
+	background-color: #ffffff;
+}
+
+.table>tbody>tr>td {
+	text-align: left;
+	color: black;
+	background-color: white;
+}
+
+.table>tbody>tr>#title {
+	text-align: left;
+}    
+ </style>
+
+<body>
+<%@ include file="/WEB-INF/jsp/home/homeMenu.jsp"%>
+ 		
+ 		
+			<div id="banner">
+				<div class="inner">
+
+<form name="form1"  method="post">
+<div id="container"  >
+    <table class="table table-striped table-bordered table-hover">
         <tr>
 			<th>아이디</th>
 			<th>이름</th>
 			<th>이메일</th>
 			<th>회원가입일자</th>
 			<th>수정일자</th>
+			<th>수정/삭제</th>
 		</tr>
 		<c:forEach var="row" items="${list}">
 			<tr>
@@ -38,30 +110,12 @@
     </table>
 </div>
 </form>
-<div class="pagination">
-    <ul>
-        <li><a href="#">Prev</a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">Next</a></li>
-    </ul>
-</div>
-<div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">Delete Confirmation</h3>
-    </div>
-    <div class="modal-body">
-        <p class="error-text">Are you sure you want to delete the user?</p>
-    </div>
-    <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-        <button class="btn btn-danger" data-dismiss="modal">Delete</button>
-    </div>
-</div>
 
+
+					</div>
+				<video autoplay loop muted playsinline src="/images/banner.mp4"></video>
+			</div> 
+			</body>
 
 
 <script>
