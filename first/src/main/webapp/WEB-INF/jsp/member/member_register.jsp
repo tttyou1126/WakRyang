@@ -80,44 +80,13 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#register").on("click", function(e){
-			var userName = $("#userName").val();
-			var userEmail = $("#userEmail").val();
-			var emailregExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-			var userId = $("#userId").val();
 			var pw = $("#userPw").val();
             var pwConfirm = $("#confirm").val();
             var checkId = $('#checkId').val();
-            if(userName == ''){
-                alert("이름을 입력해주세요.");
-                $("#userName").focus(); // 입력포커스 이동
+            if(pw != pwConfirm){
+                alert("비밀번호가 서로 다릅니다.");
+                $("#userPw").focus(); // 입력포커스 이동
                 return false; // 함수 종료
-            }
-            if(userEmail == ''){
-                alert("이메일을 입력해주세요.");
-                $("#userEmail").focus(); // 입력포커스 이동
-                return false; // 함수 종료
-            }
-            if(userId == ''){
-                alert("아이디를 입력해주세요.");
-                $("#userId").focus(); // 입력포커스 이동
-                return false; // 함수 종료
-            }
-            if(pw == ''){
-                alert("비밀번호를 입력해주세요.");
-                $("#pw").focus(); // 입력포커스 이동
-                return false; // 함수 종료
-            }
-            if(pwConfirm == ''){
-                alert("확인 비밀번호를 입력해주세요.");
-                $("#pwConfirm").focus(); // 입력포커스 이동
-                return false; // 함수 종료
-            }
-            if(pw.length < 8 || pw.length > 20){
-            	alert("비밀번호는 8자리 ~ 20자리 이내로 입력해주세요.");
-            	return false;
-           	}else if(pw.search(/\s/) != -1){
-            	alert("비밀번호는 공백 없이 입력해주세요.");
-            	return false;
             }
             if(checkId=="NULL"){
             	alert("아이디를 입력해주세요.");
@@ -129,12 +98,6 @@
             	alert("중복된 아이디입니다.");
                   $('#id').val('');
                   $('#id').focus();
-                  return false;
-            }
-            if(userEmail.match(emailregExp) == null){
-            	alert("이메일이 형식에 맞지 않습니다.");
-                  $('#userEmail').val('');
-                  $('#userEmail').focus();
                   return false;
             }
 
