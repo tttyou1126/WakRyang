@@ -36,7 +36,7 @@ public interface SampleDAO {
 		update("sample.deleteBoard", map);
 	}
 */
-	public List<BoardVO> boardList(String searchOption, String keyword);
+	public List<BoardVO> boardList(int start, int end, String searchOption, String keyword);
 
 	public void writeBoard(BoardVO vo);
 

@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import first.common.common.CommandMap;
 import first.sample.service.SampleService;
+import first.sample.vo.BoardPager;
 import first.sample.vo.BoardVO;
 
 @Controller
@@ -26,44 +27,23 @@ public class SampleController {
 	Log log = LogFactory.getLog(this.getClass());
 	@Resource(name = "sampleService")
 	private SampleService sampleService;
-	/*
-	@RequestMapping("main/main.do")
-	public String openSampleBoardList1(Model model) throws Exception {
-		List<BoardVO> list = sampleService.boardList();
-		model.addAttribute("list", list);
-		return "main/main";
-	}
-	*/
-	
-	/*
-	@RequestMapping("main/main.do")
-	public String openSampleBoardList(Model model) throws Exception {
-		List<BoardVO> list = boardService.listAll();
-        // ModelAndView - 모델과 뷰
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("board/list"); // 뷰를 list.jsp로 설정
-        mav.addObject("list", list); // 데이터를 저장
-        return mav; // list.jsp로 List가 전달된다.
-	}
-	*/
-	
-	/*
-	@RequestMapping("sample/board.do")
-	public String openSampleBoardList(Model model) throws Exception {
-		List<BoardVO> list = sampleService.boardList();
-		model.addAttribute("list", list);
-		return "sample/boardList";
-	}	
-	*/
 
 	@RequestMapping("sample/board.do")
 	public ModelAndView BoardList(@RequestParam(defaultValue="title") String searchOption,
-            @RequestParam(defaultValue="") String keyword) throws Exception {
+            @RequestParam(defaultValue="") String keyword,
+            @RequestParam(defaultValue="1") int curPage) throws Exception {
 	    // 레코드의 갯수
 	    int count = sampleService.countArticle(searchOption, keyword);
+	    
+		// 페이지 나누기 관련 처리
+	    BoardPager boardPager = new BoardPager(count, curPage);
+	    int start = boardPager.getPageBegin();
+	    int end = boardPager.getPageEnd();
 		
-		List<BoardVO> list = sampleService.boardList(searchOption, keyword);
 		
+		List<BoardVO> list = sampleService.boardList(start, end, searchOption, keyword);
+		
+
 	    // 데이터를 맵에 저장
 	    /*
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -79,6 +59,7 @@ public class SampleController {
 	    mav.addObject("count", count);
 	    mav.addObject("searchOption", searchOption);
 	    mav.addObject("keyword", keyword);
+	    mav.addObject("boardPager", boardPager);
 	    mav.addObject("list", list); // 맵에 저장된 데이터를 mav에 저장
 	    mav.setViewName("sample/boardList"); // 뷰를 list.jsp로 설정
 	    return mav; // list.jsp로 List가 전달된다.

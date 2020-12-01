@@ -24,11 +24,14 @@ public class SampleDAOImpl implements SampleDAO {
 	SqlSession sqlSession;
 	
 	@Override
-	public List<BoardVO> boardList(String searchOption, String keyword) {
+	public List<BoardVO> boardList(int start, int end, String searchOption, String keyword) {
 		   // 검색옵션, 키워드 맵에 저장
-	    Map<String, String> map = new HashMap<String, String>();
+	    Map<String, Object> map = new HashMap<String, Object>();
 	    map.put("searchOption", searchOption);
 	    map.put("keyword", keyword);
+	 // BETWEEN #{start}, #{end}에 입력될 값을 맵에 
+	    map.put("start", start);
+	    map.put("end", end);
 	    return sqlSession.selectList("sample.boardList", map);
 	}
 

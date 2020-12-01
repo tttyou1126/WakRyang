@@ -19,8 +19,8 @@ public class SampleServiceImpl implements SampleService {
 	SampleDAO sampleDAO;
 
 	@Override
-	public List<BoardVO> boardList(String searchOption, String keyword) {
-		return sampleDAO.boardList(searchOption, keyword);
+	public List<BoardVO> boardList(int start, int end, String searchOption, String keyword) {
+		return sampleDAO.boardList(start, end, searchOption, keyword);
 	}
 
 

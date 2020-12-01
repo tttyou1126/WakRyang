@@ -6,7 +6,7 @@ import first.sample.vo.BoardVO;
 
 public interface SampleService {
 
-	public List<BoardVO> boardList(String searchOption, String keyword);
+	public List<BoardVO> boardList(int start, int end, String searchOption, String keyword);
 
 	void writeBoard(BoardVO vo);
 

@@ -11,6 +11,7 @@
     		<include refid="search"></include>
 			and DEL_GB = 'N'
 			ORDER BY IDX DESC
+			limit #{start}, 10
 	</select>
 
 <!-- sql code 조각 -->
