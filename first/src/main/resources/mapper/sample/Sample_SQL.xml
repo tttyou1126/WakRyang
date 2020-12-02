@@ -11,7 +11,7 @@
     		<include refid="search"></include>
 			and DEL_GB = 'N'
 			ORDER BY IDX DESC
-			limit #{start}, 10
+			limit #{start}, 10 <!-- start부터 10개 게시물 -->
 	</select>
 
 <!-- sql code 조각 -->

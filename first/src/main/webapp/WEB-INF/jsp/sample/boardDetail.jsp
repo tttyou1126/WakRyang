@@ -154,8 +154,10 @@ to {
 	<script type="text/javascript"> 
 	$(document).ready(function(){
 		$("#list").on("click", function(e){ //목록으로 버튼 
-			e.preventDefault(); 
-			fn_openBoardList(); 
+			var curPage = getParameterByName('curPage');
+			var searchOption = getParameterByName('searchOption');
+			var keyword = getParameterByName('keyword');
+			location.href="${path}/sample/board.do?curPage="+curPage+"&searchOption="+searchOption+"&keyword="+keyword;
 		}); 
 		
 		$("#update").on("click", function(e){ 
@@ -176,6 +178,14 @@ to {
 		comSubmit.addParam("IDX", idx); 
 		comSubmit.submit(); 
 	} 
+	
+	function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+        return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
 	
 	</script>
 </body>

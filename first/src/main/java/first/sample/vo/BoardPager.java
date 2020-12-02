@@ -51,7 +51,7 @@ public class BoardPager {
     
     public void setPageRange(){
     // WHERE rn BETWEEN #{start} AND #{end}
-        // 시작번호 = (현재페이지-1)*페이지당 게시물수 +1
+        // 시작번호 = (현재페이지-1)*페이지당 게시물수 +0
         pageBegin = (curPage-1)*PAGE_SCALE+0;
         // 끝번호 = 시작번호+페이지당 게시물수 -1
         pageEnd = pageBegin+PAGE_SCALE-1;

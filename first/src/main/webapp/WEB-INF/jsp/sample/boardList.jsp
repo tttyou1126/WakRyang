@@ -171,10 +171,10 @@ to {
 					<c:choose>
 								<c:when test="${fn:length(list) > 0}">
 					<c:forEach var="row" items="${list }" varStatus="status">
-						<tr>
+
 							<td>${row.IDX}</td>
 							<td id="title" class="title">
-								<a href="${path}/sample/viewBoard.do?IDX=${row.IDX}" name="title">${row.TITLE}</a>
+								<a href="${path}/sample/viewBoard.do?IDX=${row.IDX}&curPage=${boardPager.curPage}&searchOption=${searchOption}&keyword=${keyword}" name="title">${row.TITLE}</a>
 								<c:if test="${row.HIT_CNT >= 20}">
 									<span class="hit">hit!</span>
 								</c:if>
