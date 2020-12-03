@@ -144,7 +144,24 @@ to {
 	
 	<div align="right">
 	<a href="#this" class="btn" id="list">목록으로</a>
-	<a href="#this" class="btn" id="update">수정하기</a>
+
+	
+	
+<c:choose>
+	<c:when test="${sessionScope.userId == dto.CREA_ID}">
+		<a href="#this" class="btn" id="update">수정하기</a>
+	</c:when>
+	<c:when test="${sessionScope.userId == 'admin'}">
+		<a href="#this" class="btn" id="update">수정하기</a>
+	</c:when>
+	<c:otherwise>
+		
+	</c:otherwise>
+</c:choose>		
+	
+	
+	
+	
 	</div>
 	</div>
 	</div>
