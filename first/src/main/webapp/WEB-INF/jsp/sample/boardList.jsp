@@ -45,7 +45,9 @@ body {
 #list {
 	text-align: center;
 }
-
+#writeDisable {
+	text-align: right;
+}
 #write {
 	text-align: right;
 } /* Bootstrap 수정 */
@@ -143,7 +145,7 @@ to {
 		
 	    <select name="searchOption">
             <!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
-            <option value="all" <c:out value="${searchOption == 'all'?'selected':''}"/> >제목+ID+제목</option>
+            <option value="all" <c:out value="${searchOption == 'all'?'selected':''}"/> >제목+ID+내용</option>
             <option value="CREA_ID" <c:out value="${searchOption == 'CREA_ID'?'selected':''}"/> >ID</option>
             <option value="CONTENTS" <c:out value="${searchOption == 'CONTENTS'?'selected':''}"/> >내용</option>
             <option value="TITLE" <c:out value="${searchOption == 'TITLE'?'selected':''}"/> >제목</option>
@@ -152,8 +154,15 @@ to {
 		
 		<input type="submit" name="test" value="조회">
 		
+<c:choose>
+	<c:when test="${sessionScope.userId == null}">
+		<div id="writeDisable"><a href="javascript:writeDisable()"><span style="background-color:#000000"><font color="WHITE" style="font-weight:bolder">글쓰기</font></span></a></div>
+	</c:when>
+	<c:otherwise>
+		<div id="write"> <a href="#this"  id="write"> <span style="background-color:#000000"><font color="WHITE" style="font-weight:bolder">글쓰기</font></span> </a></div>
+	</c:otherwise>
+</c:choose>		
 
-    <div id="write"> <a href="#this"  id="write"> <span style="background-color:#000000"><font color="WHITE" style="font-weight:bolder">글쓰기</font></span> </a></div>
 
 		<div>
 			<table class="table table-striped table-bordered table-hover">
@@ -261,6 +270,9 @@ to {
 			
 			function list(page){
 		        location.href="${path}/sample/board.do?curPage="+page+"&searchOption-${searchOption}"+"&keyword=${keyword}";
+		    }
+			function writeDisable(){
+		        alert("로그인 해주세요.");
 		    }
 			
 

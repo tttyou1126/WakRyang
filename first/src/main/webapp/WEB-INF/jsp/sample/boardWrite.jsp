@@ -139,7 +139,7 @@ to {
 	</div>
 	</form>
 	</div>
-	<video autoplay loop muted playsinline src="/images/banner.mp4"></video>
+	<video autoplay loop muted playsinline src="/images/Stars19642.mp4"></video>
 	</div>
 	<script type="text/javascript">
 		$(document).ready(function() {

@@ -1,15 +1,8 @@
 package first.sample.controller;
 
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import javax.annotation.Resource;
 
-import org.apache.ibatis.logging.Log;
-import org.apache.ibatis.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,14 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import first.common.common.CommandMap;
 import first.sample.service.SampleService;
 import first.sample.vo.BoardPager;
 import first.sample.vo.BoardVO;
 
 @Controller
 public class SampleController {
-	Log log = LogFactory.getLog(this.getClass());
 	@Resource(name = "sampleService")
 	private SampleService sampleService;
 
@@ -64,22 +55,6 @@ public class SampleController {
 	    mav.setViewName("sample/boardList"); // 뷰를 list.jsp로 설정
 	    return mav; // list.jsp로 List가 전달된다.
 	}	
-	
-
-	
-	@RequestMapping(value = "/sample/testMapArgumentResolver.do")
-	public ModelAndView testMapArgumentResolver(CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("");
-		if (commandMap.isEmpty() == false) {
-			Iterator<Entry<String, Object>> iterator = commandMap.getMap().entrySet().iterator();
-			Entry<String, Object> entry = null;
-			while (iterator.hasNext()) {
-				entry = iterator.next();
-				log.debug("key : " + entry.getKey() + ", value : " + entry.getValue());
-			}
-		}
-		return mv;
-	}
 
 	
 	@RequestMapping("sample/writeScreen.do")
