@@ -11,14 +11,7 @@ public class BoardVO {
 	private int HIT_CNT;
 	private String DEL_GB; 
 	private String CREA_ID;
-	private int recnt;            // **게시글 댓글의 수 추가
 	
-	public int getRecnt() {
-		return recnt;
-	}
-	public void setRecnt(int recnt) {
-		this.recnt = recnt;
-	}
 	public int getIDX() {
 		return IDX;
 	}
@@ -67,12 +60,12 @@ public class BoardVO {
 	public void setCREA_ID(String cREA_ID) {
 		CREA_ID = cREA_ID;
 	}
-
 	@Override
 	public String toString() {
 		return "BoardVO [IDX=" + IDX + ", PARENT_IDX=" + PARENT_IDX + ", TITLE=" + TITLE + ", CONTENTS=" + CONTENTS
 				+ ", CREA_DTM=" + CREA_DTM + ", HIT_CNT=" + HIT_CNT + ", DEL_GB=" + DEL_GB + ", CREA_ID=" + CREA_ID
-				+ ", recnt=" + recnt + "]";
+				+ "]";
 	}
+
 	
 }

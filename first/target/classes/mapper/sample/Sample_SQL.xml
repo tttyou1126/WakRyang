@@ -5,8 +5,10 @@
 
 	<select
 		id="boardList" resultType="first.sample.vo.BoardVO">
-			SELECT IDX, TITLE, HIT_CNT, CREA_DTM, CREA_ID
-			FROM TB_BOARD 
+			SELECT distinct IDX, TITLE, HIT_CNT, CREA_DTM, CREA_ID,
+			<!-- ** 댓글숫자표시 -->
+            (SELECT COUNT(*) FROM tbl_reply WHERE IDX=b.IDX) AS recnt
+			FROM tb_board b, tbl_member m
 			<!-- WHERE절을 include 태그로 삽입 -->
     		<include refid="search"></include>
 			and DEL_GB = 'N'

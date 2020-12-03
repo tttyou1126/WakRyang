@@ -184,11 +184,6 @@ to {
 							<td>${row.IDX}</td>
 							<td id="title" class="title">
 								<a href="${path}/sample/viewBoard.do?IDX=${row.IDX}&curPage=${boardPager.curPage}&searchOption=${searchOption}&keyword=${keyword}" name="title">${row.TITLE}</a>
-								<c:if test="${row.recnt > 0}">
-				                    <span style="color: red;">(${row.recnt})
-				                    </span>
-			                    </c:if>
-								
 								<c:if test="${row.HIT_CNT >= 20}">
 									<span class="hit">hit!</span>
 								</c:if>
