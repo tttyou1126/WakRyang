@@ -158,13 +158,16 @@ to {
 	</c:otherwise>
 </c:choose>	
 
-	<div align="center">
+	<div align="left">
         <br>
         <!-- **로그인 한 회원에게만 댓글 작성폼이 보이게 처리 -->
-        <c:if test="${sessionScope.userId != null}">    
+        <c:if test="${sessionScope.userId != null}">  
+        comments
+        <br>  
         <textarea rows="3" cols="70" id="replytext" placeholder="댓글을 작성해주세요"></textarea>
         <br>
         <button type="button" class="btn" id="btnReply">댓글 작성</button>
+        <br>
         </c:if>
         
     <!-- **댓글 목록 출력할 위치 -->
@@ -251,13 +254,17 @@ to {
                     output += "<tr>";
                     output += "<td>"+result[i].userName;
                     output += "("+changeDate(result[i].regdate)+")<br>";
-                    output += result[i].replytext+"</td>";
+                    output += result[i].replytext;
+                    output += "<hr width = 300, color='white' align='left'>";
+                    output += "</td>"
+                    
                     output += "<tr>";
                 }
                 output += "</table>";
                 $("#listReply").html(output);
             }
         });
+        $("#replytext").val('');
     }
     // **날짜 변환 함수 작성
     function changeDate(date){
