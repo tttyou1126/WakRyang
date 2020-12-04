@@ -8,6 +8,7 @@
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
+
   #banner > .inner {
     -moz-transform: scale(1.0);
     -webkit-transform: scale(1.0);
@@ -173,6 +174,10 @@ to {
     <!-- **댓글 목록 출력할 위치 -->
     <br>
     <div id="listReply"></div>	
+    <br>
+    <div align="center">
+    <a href="#top"><font color="white", size="5"> TOP </font></a>
+    </div>
 	</div>
 </font>	
 	
