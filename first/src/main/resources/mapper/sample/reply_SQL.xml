@@ -6,13 +6,13 @@
     
     <!-- 댓글 입력 -->
     <insert id="insertReply">
-        INSERT INTO tbl_reply (IDX, replytext, replyer, regdate, updatedate)
-        VALUES (#{IDX}, #{replytext}, #{replyer}, sysdate(), sysdate())
+        INSERT INTO tbl_reply (IDX, replytext, replyer, regdate, updatedate, secret_reply)
+        VALUES (#{IDX}, #{replytext}, #{replyer}, sysdate(), sysdate(), #{secretReply})
     </insert>
     
     <!-- 댓글 목록 -->
     <select id="listReply" resultType="first.sample.vo.ReplyVO">
-        SELECT r.reply_idx as replyidx, r.IDX, r.replytext, r.replyer, m.user_name AS userName, r.regdate, r.updatedate
+        SELECT r.reply_idx as replyidx, r.IDX, r.replytext, r.replyer, r.secret_reply AS secretReply, m.user_name AS userName, r.regdate, r.updatedate
         FROM tbl_reply r, tbl_member m
         WHERE  r.replyer = m.user_id AND IDX=#{IDX}
         ORDER BY reply_idx

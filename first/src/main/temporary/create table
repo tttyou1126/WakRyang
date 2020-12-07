@@ -9,3 +9,11 @@ CREATE TABLE `del_tb_board` (
   `CREA_ID` varchar(30) NOT NULL COMMENT '''생성자 ID''',
   PRIMARY KEY (`IDX`)
 ) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8 COMMENT='삭제된 게시글 테이블';
+
+
+
+
+
+
+ALTER TABLE `test`.`tbl_reply` 
+ADD COLUMN `secret_reply` VARCHAR(45) NULL AFTER `updatedate`;

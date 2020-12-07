@@ -167,6 +167,8 @@ to {
         <br>  
         <textarea rows="3" cols="70" id="replytext" placeholder="댓글을 작성해주세요"></textarea>
         <br>
+        <!-- **비밀댓글 체크박스 -->
+        <input type="checkbox" id="secretReply">비밀 댓글
         <button type="button" class="btn" id="btnReply">댓글 작성</button>
         <br>
         </c:if>
@@ -210,7 +212,13 @@ to {
         $("#btnReply").click(function(){
             var replytext=$("#replytext").val();
             var idx="${dto.IDX}"
-            var param="replytext="+replytext+"&IDX="+idx;
+            // ** 비밀댓글 체크여부
+            var secretReply = "n";
+            // 태그.is(":속성") 체크여부 true/false
+            if( $("#secretReply").is(":checked") ){
+                secretReply = "y";
+            }            
+            var param="replytext="+replytext+"&IDX="+idx+"&secretReply="+secretReply;
             $.ajax({                
                 type: "post",
                 url: "${path}/reply/insert.do",
