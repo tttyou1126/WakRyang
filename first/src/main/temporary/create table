@@ -1,0 +1,11 @@
+CREATE TABLE `del_tb_board` (
+  `IDX` int NOT NULL AUTO_INCREMENT COMMENT '인덱스',
+  `PARENT_IDX` int DEFAULT NULL COMMENT '부모글 인덱스',
+  `TITLE` varchar(100) NOT NULL COMMENT '''제목''',
+  `CONTENTS` varchar(4000) NOT NULL COMMENT '''내용''',
+  `CREA_DTM` datetime NOT NULL COMMENT '생성일자',
+  `HIT_CNT` int NOT NULL COMMENT '조회수',
+  `DEL_GB` varchar(1) NOT NULL COMMENT '''삭제구분''',
+  `CREA_ID` varchar(30) NOT NULL COMMENT '''생성자 ID''',
+  PRIMARY KEY (`IDX`)
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8 COMMENT='삭제된 게시글 테이블';

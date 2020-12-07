@@ -86,6 +86,16 @@
 			WHERE IDX = #{IDX} 
 	</update>
 	
+	
+	
+	<insert id="insertDelBoard">
+			INSERT INTO DEL_TB_BOARD 
+			select *
+			from TB_BOARD
+			WHERE IDX = #{IDX}
+	</insert>
+	
+	
 	<delete
 		id="deleteBoard">  
 			UPDATE TB_BOARD 

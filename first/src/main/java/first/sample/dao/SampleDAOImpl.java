@@ -82,6 +82,7 @@ public class SampleDAOImpl implements SampleDAO {
 
 	@Override
 	public void deleteBoard(int iDX) {
+		sqlSession.update("sample.insertDelBoard", iDX);
 		sqlSession.delete("sample.deleteBoard", iDX);
 		
 	}

@@ -174,7 +174,7 @@ to {
     <!-- **댓글 목록 출력할 위치 -->
     <br>
     <div id="listReply"></div>	
-    <br>
+    <br> <br>  <br>  <br>
     <div align="center">
     <a href="#top"><font color="white", size="5"> TOP </font></a>
     </div>
