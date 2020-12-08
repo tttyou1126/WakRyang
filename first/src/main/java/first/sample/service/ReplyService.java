@@ -15,4 +15,8 @@ public interface ReplyService {
     public void update(ReplyVO vo);
     // 댓글 삭제
     public void delete(Integer rno);
+    
+	public ReplyVO detail(Integer reply_idx);
+	
+
 }

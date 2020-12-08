@@ -17,4 +17,25 @@
         WHERE  r.replyer = m.user_id AND IDX=#{IDX}
         ORDER BY reply_idx
     </select>
+    
+    <!-- 3. 댓글 상세보기 -->
+    <select id="detailReply" resultType="first.sample.vo.ReplyVO">
+        SELECT reply_idx, IDX, replytext, replyer, regdate, updatedate, secret_reply AS secretReply FROM tbl_reply
+        WHERE reply_idx = #{reply_idx}
+    </select>
+    
+    <!-- 4. 댓글 수정 -->
+    <select id="updateReply">
+        UPDATE tbl_reply 
+        SET replytext = #{replytext}
+        WHERE reply_idx = #{reply_idx}
+    </select>
+    
+    <!-- 5. 댓글 삭제 -->
+    <delete id="deleteReply">
+        DELETE FROM tbl_reply
+        WHERE reply_idx = #{reply_idx}
+    </delete>
+    
+    
 </mapper>

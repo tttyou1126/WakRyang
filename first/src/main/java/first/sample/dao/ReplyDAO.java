@@ -13,4 +13,6 @@ public interface ReplyDAO {
     public void update(ReplyVO vo);
     // 댓글 삭제
     public void delete(Integer rno);
+    
+	public ReplyVO detail(Integer rno);
 }

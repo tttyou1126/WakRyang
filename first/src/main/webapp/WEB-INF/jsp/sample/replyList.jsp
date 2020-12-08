@@ -11,12 +11,20 @@
         <c:forEach var="row" items="${list}">
         <tr>    
             <td>
-                ${row.userName}(<fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/>)
+                ${row.userName}
                 <br>
                 ${row.replytext}
+                <br>
+                <!-- 본인 댓글만 수정버튼 생성되도록 처리 -->
+                <c:if test="${sessionScope.userId == row.replyer}">
+                    <input type="button" id="btnModify" value="수정" onclick="showReplyModify('${row.replyidx}')">
+                </c:if>
+                <hr>
             </td>
         </tr>
         </c:forEach>
     </table>
+    <!-- 댓글 수정 영역-->
+    <div id="modifyReply"></div>
 </body>
 </html>
