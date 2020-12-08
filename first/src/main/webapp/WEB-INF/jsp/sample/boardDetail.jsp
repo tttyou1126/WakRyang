@@ -353,7 +353,7 @@ to {
     function listReplyRest(){
         $.ajax({
             type: "get",
-            url: "${path}/reply/list/${dto.IDX}",
+            url: "${path}/reply/list/${dto.IDX}.do",
             success: function(result){
             // responseText가 result에 저장됨.
                 $("#listReply").html(result);
@@ -364,10 +364,10 @@ to {
     
     
  // **댓글 수정화면 생성 함수
-    function showReplyModify(rno){
+    function showReplyModify(replyidx){
         $.ajax({
             type: "get",
-            url: "${path}/reply/detail.do?replyidx="+rno,
+            url: "${path}/reply/detail/"+replyidx+".do",
             success: function(result){
                 $("#modifyReply").html(result);
                 // 태그.css("속성", "값")

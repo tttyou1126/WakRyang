@@ -19,12 +19,12 @@
                 <c:if test="${sessionScope.userId == row.replyer}">
                     <input type="button" id="btnModify" value="수정" onclick="showReplyModify('${row.replyidx}')">
                 </c:if>
+                <!-- 댓글 수정 영역-->
+    			<div id="modifyReply"></div>
                 <hr>
             </td>
         </tr>
         </c:forEach>
     </table>
-    <!-- 댓글 수정 영역-->
-    <div id="modifyReply"></div>
 </body>
 </html>

@@ -72,7 +72,7 @@ public class ReplyController {
     // /reply/list/1 => 1번 게시물의 댓글 목록 리턴
     // /reply/list/2 => 2번 게시물의 댓글 목록 리턴
     // @PathVariable : url에 입력될 변수값 지정
-    @RequestMapping(value="reply/list/{IDX}", method=RequestMethod.GET)
+    @RequestMapping(value="reply/list/{IDX}.do", method=RequestMethod.GET)
     @ResponseBody
     public ModelAndView replyList(@PathVariable int IDX, ModelAndView mav, HttpSession session){
        
@@ -91,9 +91,9 @@ public class ReplyController {
     // /reply/detail/1 => 1번 댓글의 상세화면 리턴
     // /reply/detail/2 => 2번 댓글의 상세화면 리턴
     // @PathVariable : url에 입력될 변수값 지정
-    @RequestMapping(value="reply/detail.do", method=RequestMethod.GET)
-    public ModelAndView replyDetail(@PathVariable("rno") Integer rno, ModelAndView mav){
-        ReplyVO vo = replyService.detail(rno);
+    @RequestMapping(value="reply/detail/{replyidx}.do", method=RequestMethod.GET)
+    public ModelAndView replyDetail(@PathVariable("replyidx") Integer replyidx, ModelAndView mav){
+        ReplyVO vo = replyService.detail(replyidx);
         // 뷰이름 지정
         mav.setViewName("sample/replyDetail");
         // 뷰에 전달할 데이터 지정
@@ -104,11 +104,11 @@ public class ReplyController {
     
     // 4. 댓글 수정 처리 - PUT:전체 수정, PATCH:일부수정
     // RequestMethod를 여러 방식으로 설정할 경우 {}안에 작성
-    @RequestMapping(value="reply/update.do/{rno}", method={RequestMethod.PUT})
-    public ResponseEntity<String> replyUpdate(@PathVariable("rno") Integer rno, @RequestBody ReplyVO vo){
+    @RequestMapping(value="reply/update/{replyidx}.do", method={RequestMethod.PUT})
+    public ResponseEntity<String> replyUpdate(@PathVariable("replyidx") Integer replyidx, @RequestBody ReplyVO vo){
         ResponseEntity<String> entity = null;
         try {
-            vo.setreidx(rno);
+            vo.setreidx(replyidx);
             replyService.update(vo);
             // 댓글 수정이 성공하면 성공 상태메시지 저장
             entity = new ResponseEntity<String>("success", HttpStatus.OK);
@@ -122,7 +122,7 @@ public class ReplyController {
     }
     
     // 5. 댓글 삭제처리
-    @RequestMapping(value="reply/delete.do/{rno}")
+    @RequestMapping(value="reply/delete/{rno}.do")
     public ResponseEntity<String> replyDelete(@PathVariable("rno") Integer rno){
         ResponseEntity<String> entity = null;
         try {

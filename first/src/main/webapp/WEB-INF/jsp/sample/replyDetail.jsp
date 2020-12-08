@@ -11,7 +11,7 @@
         var detailReplytext = $("#detailReplytext").val();
         $.ajax({
             type: "put",
-            url: "${path}/reply/update.do/${vo.rno}",
+            url: "${path}/reply/update/${vo.replyidx}.do",
             // 기본값 text/html을 json으로 변경
             headers: {
                 "Content-Type":"application/json"
@@ -41,7 +41,7 @@
         if(confirm("삭제하시겠습니까?")){
             $.ajax({
                 type: "delete",
-                url: "${path}/reply/delete.do/${vo.rno}",
+                url: "${path}/reply/delete/${vo.replyidx}.do",
                 success: function(result){
                     if(result == "success"){
                         alert("삭제되었습니다.");
@@ -55,7 +55,7 @@
 </script>
 </head>
 <body>
-    댓글 번호 : ${vo.rno}<br>
+    댓글 번호 : ${vo.replyidx}<br>
     <textarea id="detailReplytext" rows="5" cols="82">${vo.replytext}</textarea>
     <div style="text-align: center;">
         <!-- 본인 댓글만 수정, 삭제가 가능하도록 처리 -->

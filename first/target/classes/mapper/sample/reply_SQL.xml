@@ -20,21 +20,21 @@
     
     <!-- 3. 댓글 상세보기 -->
     <select id="detailReply" resultType="first.sample.vo.ReplyVO">
-        SELECT reply_idx, IDX, replytext, replyer, regdate, updatedate, secret_reply AS secretReply FROM tbl_reply
-        WHERE reply_idx = #{reply_idx}
+        SELECT reply_idx as replyidx, IDX, replytext, replyer, regdate, updatedate, secret_reply AS secretReply FROM tbl_reply
+        WHERE reply_idx = #{replyidx}
     </select>
     
     <!-- 4. 댓글 수정 -->
     <select id="updateReply">
         UPDATE tbl_reply 
         SET replytext = #{replytext}
-        WHERE reply_idx = #{reply_idx}
+        WHERE reply_idx = #{replyidx}
     </select>
     
     <!-- 5. 댓글 삭제 -->
     <delete id="deleteReply">
         DELETE FROM tbl_reply
-        WHERE reply_idx = #{reply_idx}
+        WHERE reply_idx = #{replyidx}
     </delete>
     
     
