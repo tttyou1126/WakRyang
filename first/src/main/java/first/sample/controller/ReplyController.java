@@ -38,7 +38,7 @@ public class ReplyController {
     // @ResponseEntity : 데이터 + http status code
     // @ResponseBody : 객체를 json으로 (json - String)
     // @RequestBody : json을 객체로
-    @RequestMapping(value="reply/insertRest.do", method=RequestMethod.POST)
+    @RequestMapping(value="reply/insertRest.do", method =  {RequestMethod.GET, RequestMethod.POST})
     public ResponseEntity<String> insertRest(@RequestBody ReplyVO vo, HttpSession session){
         ResponseEntity<String> entity = null;
         try {

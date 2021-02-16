@@ -109,7 +109,7 @@ to {
 <%@ include file="/WEB-INF/jsp/home/homeMenu.jsp"%>
 <div id="banner">
 				<div class="inner">
-<form id="frm">
+<form id="frm" method="post" enctype="multipart/form-data">
 <div id="container">
 	<input type="hidden" id="CREA_ID" name="CREA_ID" value="${sessionScope.userName}">
 		<table class="table table-striped table-bordered table-hover" style="table-layout: fixed">
@@ -130,14 +130,28 @@ to {
 					<th scope="row">작성자</th>
 					<td>${sessionScope.userName}</td>
 				</tr>
+				<tr>
+					<td colspan="2" style="text-align: left;">
+				        <input type="file" name="file"> 
+					</th>
+				</tr>				
 			</tbody>
 		</table>
 		<div align="right">
 		<a href="#this"  id="write"><font color = "white">작성하기</font></a> 
 		<a href="#this"  id="list"><font color = "white">목록으로</font></a>
+	
 		</div>
 	</div>
 	</form>
+	
+	
+	
+    	
+    	
+
+    	
+	
 	</div>
 	<video autoplay loop muted playsinline src="/images/Stars19642.mp4"></video>
 	</div>
@@ -151,7 +165,54 @@ to {
 		$("#write").on("click", function(e){ // 작성하기
 			e.preventDefault();
 			fn_insertBoard();
+
 		});
+		
+		
+		
+		
+		
+		/*
+		
+		$(".fileDrop").on("drop", function(event) {
+		    event.preventDefault(); 
+		    var files = event.originalEvent.dataTransfer.files;
+		    var file = files[0];
+		    console.log(file);
+		    var formData = new FormData();
+		    formData.append("file", file);
+
+		    $.ajax({
+		        type: "post",
+		        url: "${path}/upload/uploadAjax",
+		        data: formData,
+		        dataType: "text",
+		        processData: false,
+		        contentType: false,
+		        // 업로드 성공하면
+		        success: function(data) {
+		            var str = "";
+		            // 이미지 파일이면 썸네일 이미지 출력
+		            if(checkImageType(data)){ 
+		                str = "<div><a href='${path}/upload/displayFile?fileName="+getImageLink(data)+"'>";
+		                str += "<img src='${path}/upload/displayFile?fileName="+data+"'></a>";
+		            // 일반파일이면 다운로드링크
+		            } else { 
+		                str = "<div><a href='${path}/upload/displayFile?fileName="+data+"'>"+getOriginalName(data)+"</a>";
+		            }
+		            // 삭제 버튼
+		            str += "<span data-src="+data+">[삭제]</span></div>";
+		            $(".uploadedList").append(str);
+		        }
+		    });
+		});
+		
+		
+		*/
+		
+		
+		
+
 	});
 		
 		function fn_openBoardList(){

@@ -206,10 +206,10 @@ to {
 		
 		
 		//listReply(); // **댓글 목록 불러오기
-        //listReply2(); // ** json 리턴방식
+        listReply2(); // ** json 리턴방식
         
         // ** 댓글 쓰기 버튼 클릭 이벤트 (ajax로 처리)
-        /* $("#btnReply").click(function(){
+        $("#btnReply").click(function(){
             var replytext=$("#replytext").val();
             var idx="${dto.IDX}"
             // ** 비밀댓글 체크여부
@@ -231,23 +231,8 @@ to {
                 error:function(request,status,error){
                     alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                    }
-            }); 
-        }); */
-        
-        
-        
-		// 1. 댓글 입력
-        $("#btnReply").click(function(){
-            //reply(); // 폼데이터 형식으로 입력
-            replyJson(); // json 형식으로 입력
+            });
         });
-        
-        // 2. 댓글 목록
-        //listReply("1"); // 댓글 목록 불러오기
-        //listReply2(); // json 리턴방식
-        listReplyRest(); // rest방식
-        
-        
 	}); 
 	function fn_openBoardList(){ 
 		var comSubmit = new ComSubmit(); 
@@ -270,53 +255,12 @@ to {
         return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
 	
-	
-	// 1_2. 댓글 입력 함수(json방식)
-    function replyJson(){
-        var replytext=$("#replytext").val();
-        var IDX="${dto.IDX}"
-        // 비밀댓글 체크여부
-        var secretReply = "n";
-        // 태그.is(":속성") 체크여부 true/false
-        if( $("#secretReply").is(":checked") ){
-            secretReply = "y";
-        }
-        $.ajax({                
-            type: "post",
-            url: "${path}/reply/insertRest.do",
-            headers: {
-                "Content-Type" : "application/json"
-            },
-            dateType: "text",
-            // param형식보다 간편
-            data: JSON.stringify({
-                IDX : IDX,
-                replytext : replytext,
-                secretReply : secretReply
-            }),
-            success: function(){
-                alert("댓글이 등록되었습니다.");
-                // 댓글 입력 완료후 댓글 목록 불러오기 함수 호출
-                //listReply("1");     // 전통적인 Controller방식
-                //listReply2();     // json리턴 방식
-                listReplyRest(); // Rest 방식
-            }
-        });
-    }
-	
-	
-	
 	function listReply2(){
         $.ajax({
             type: "get",
             //contentType: "application/json", ==> 생략가능(RestController이기때문에 가능)
             url: "${path}/reply/listJson.do?IDX=${dto.IDX}",
-            success: function(result){ // 인자 result에는 서버에서 리턴해준 배열이 들어감
-         			// 배열이 들어온 이유는 dataType속성을 JSON으로 했기 때문에 리턴되는 데이터가 텍스트더라도 내부적으로 그 데이터를                                     
-         			// JSON으로 해석하여 배열로 변환
-                    // 그래서 배열에 있는 result값을 체크하면 result가 true라면 성공 이벤트 관련 로직을 출력한다.
-                    // 서버와의 통신이 성공하면 호출되는 이벤트 핸들러인 function(result)
-                    // result 인자에는 서버가 리턴해주는 데이터가 들어감
+            success: function(result){
                 console.log(result);
                 var output = "<table>";
                 for(var i in result){
@@ -347,34 +291,7 @@ to {
         strDate = year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second;
         return strDate;
     }
-    
-    
- // 2_3. 댓글 목록 - Rest방식
-    function listReplyRest(){
-        $.ajax({
-            type: "get",
-            url: "${path}/reply/list/${dto.IDX}.do",
-            success: function(result){
-            // responseText가 result에 저장됨.
-                $("#listReply").html(result);
-            }
-        });
-    }    
-    
-    
-    
- // **댓글 수정화면 생성 함수
-    function showReplyModify(replyidx){
-        $.ajax({
-            type: "get",
-            url: "${path}/reply/detail/"+replyidx+".do",
-            success: function(result){
-                $("#modifyReply").html(result);
-                // 태그.css("속성", "값")
-                $("#modifyReply").css("visibility", "visible");
-            }
-        })
- }
+
 	
 	</script>
 </body>
