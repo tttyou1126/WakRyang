@@ -115,7 +115,7 @@ public class SampleController {
 		
 		sampleService.writeBoard(vo);
 		
-	//	new ResponseEntity<String>(uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes()), HttpStatus.OK);
+		new ResponseEntity<String>(uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes()), HttpStatus.OK);
 		
 		return "redirect:/sample/board.do";
 	}		
@@ -166,7 +166,7 @@ public class SampleController {
     }
 	
 	
-	/*
+	
 	
 	   // 파일명 랜덤생성 메서드
 		public String uploadFile(String uploadPath, String originalName, byte[] fileData) throws Exception {
@@ -271,7 +271,7 @@ public class SampleController {
 		    }	
 	
 	
-	*/
+	
 	
 	
 }

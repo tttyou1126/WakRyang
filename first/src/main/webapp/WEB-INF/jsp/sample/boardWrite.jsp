@@ -172,7 +172,7 @@ to {
 		
 		
 		
-		/*
+		
 		
 		$(".fileDrop").on("drop", function(event) {
 		    event.preventDefault(); 
@@ -208,7 +208,7 @@ to {
 		});
 		
 		
-		*/
+		
 		
 		
 		
