@@ -4,17 +4,12 @@ import java.sql.Timestamp;
 
 public class MemberVO {
 	private String userId;
-	@Override
-	public String toString() {
-		return "MemberVO [userId=" + userId + ", userPw=" + userPw + ", userName=" + userName + ", userEmail="
-				+ userEmail + ", userRegdate=" + userRegdate + ", userUpdatedate=" + userUpdatedate + "]";
-	}
-
 	private String userPw;
 	private String userName;
 	private String userEmail;
 	private Timestamp userRegdate; // java.sql.Timestamp  (Date는 시간표시가 안됨)
 	private Timestamp userUpdatedate;
+	private String userAuth; // 210315 세션 정보에 권한 추가
 
 	public String getUserId() {
 		return userId;
@@ -64,7 +59,20 @@ public class MemberVO {
 		this.userUpdatedate = userUpdatedate;
 	}
 
+	@Override
+	public String toString() { // 210315 세션 정보에 권한 추가
+		return "MemberVO [userId=" + userId + ", userPw=" + userPw + ", userName=" + userName + ", userEmail="
+				+ userEmail + ", userRegdate=" + userRegdate + ", userUpdatedate=" + userUpdatedate + ", userAuth="
+				+ userAuth + "]";
+	}
 
+	public String getUserAuth() { // 210315 세션 정보에 권한 추가
+		return userAuth;
+	}
+
+	public void setUserAuth(String userAuth) {
+		this.userAuth = userAuth;
+	}
 
 
 }

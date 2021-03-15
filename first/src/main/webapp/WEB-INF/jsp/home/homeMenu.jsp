@@ -62,7 +62,7 @@
                 <li><a href="${path}/home/about.do">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 
-				<c:if test="${not empty sessionScope.userName}">
+				<c:if test="${sessionScope.userAuth == 'ADMIN'}">
 					<li><a href="${path}/member/list.do">회원관리</a></li>	
 				</c:if>			
 						

@@ -61,7 +61,8 @@
             user_name AS userName,
             user_id AS userId,
             user_email AS userEmail,
-            user_regdate AS userRegdate
+            user_regdate AS userRegdate,
+            user_authority AS userAuth <!-- 210315 세션 정보에 권한 추가 -->
         FROM tbl_member
         WHERE user_id = #{userId} AND user_pw = #{userPw}
     </select>
