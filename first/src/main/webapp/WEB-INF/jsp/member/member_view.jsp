@@ -10,7 +10,7 @@
 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="card">
-                            <div class="card-header">Register</div>
+                            <div class="card-header">Modify</div> <!-- 210315 유저 상세 보기 화면 타이틀 Register->Modify로 수정 -->
                             <div class="card-body">
 
                                 <form name="form1" class="form-horizontal" method="post" action="${path}/member/insert.do">
@@ -53,6 +53,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+                                        <div class="cols-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                                <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm your Password" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Auth" class="cols-sm-2 control-label">Authority</label> <!-- 210315 유저 상세 보기 화면에서 권한 부여할 수 있도록 개선 -->
                                         <div class="cols-sm-10">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
