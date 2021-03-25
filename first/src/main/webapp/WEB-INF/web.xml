@@ -52,5 +52,17 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	
+<filter>
+    <display-name>springMultipartFilter</display-name>
+    <filter-name>springMultipartFilter</filter-name>
+    <filter-class>org.springframework.web.multipart.support.MultipartFilter</filter-class>
+    <init-param>
+<param-name>multipartResolverBeanName</param-name>
+<param-value>multipartResolver</param-value>
+   </init-param>
+</filter>
+	
 
 </web-app>

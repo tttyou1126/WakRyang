@@ -1,19 +1,22 @@
 package first.sample.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
-import org.apache.ibatis.logging.Log;
-import org.apache.ibatis.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import first.sample.controller.SampleController;
 import first.sample.dao.SampleDAO;
 import first.sample.vo.BoardVO;
 
 @Service("sampleService")
 public class SampleServiceImpl implements SampleService {
-	Log log = LogFactory.getLog(this.getClass());
+	private static final Logger logger = LoggerFactory.getLogger(SampleController.class);
 
 	@Inject
 	SampleDAO sampleDAO;
@@ -38,9 +41,14 @@ public class SampleServiceImpl implements SampleService {
 */
 
 	@Override
-	public void writeBoard(BoardVO vo) {
+	public void writeBoard(MultipartFile[] file, BoardVO vo, List<Map<String, Object>> fileList) throws Exception {
 		sampleDAO.writeBoard(vo);
 		
+		// 210325 파일 다중 업로드
+	    for(int i=0; i<fileList.size(); i++) {
+	    	sampleDAO.addAttach(fileList.get(i));
+	    }
+
 	}
 
 

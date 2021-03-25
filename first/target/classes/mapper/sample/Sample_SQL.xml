@@ -41,14 +41,16 @@
 
 	<insert id="insertBoard">
 			INSERT INTO TB_BOARD 
-			( TITLE, 
+			( IDX, 
+			TITLE, 
 			CONTENTS, 
 			HIT_CNT, 
 			DEL_GB, 
 			CREA_DTM, 
 			CREA_ID ) 
 			VALUES 
-			( #{TITLE}, 
+			( get_seq('seq_board'), <!-- 210325 파일 다중 업로드 적재를 위한 idx 자체 자동 증가에서  시퀀스 증가 형식으로 변경 -->
+			#{TITLE}, 
 			#{CONTENTS}, 
 			0, 
 			'N', 
@@ -102,6 +104,15 @@
 			SET DEL_GB = 'Y'
 			WHERE IDX = #{IDX} 
 	</delete>
+	
+	
+	<insert id="addAttach"> <!-- 210325 파일 다중 업로드 데이터 적재 쿼리 -->
+	    INSERT INTO tbl_attach (
+	        fullname, bno, regdate
+	    ) VALUES (
+	        #{SAVE_FILE_NAME}, (select id from seq_mysql where seq_name = 'seq_board'), SYSDATE()
+	    )
+	</insert>
 
 
 </mapper>

@@ -3,6 +3,7 @@ package first.sample.controller;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -42,7 +43,7 @@ public class SampleController {
     String uploadPath;
 	
 	
-	private static final Logger logger = LoggerFactory.getLogger(UploadController.class);
+	private static final Logger logger = LoggerFactory.getLogger(SampleController.class);
 
 	@RequestMapping("sample/board.do")
 	public ModelAndView BoardList(@RequestParam(defaultValue="title") String searchOption,
@@ -88,35 +89,56 @@ public class SampleController {
 	}	
 	
 	@RequestMapping(value="sample/writeBoard.do", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
-	public String writeBoard(MultipartFile file, @ModelAttribute BoardVO vo) throws Exception {
+	public String writeBoard( @RequestParam MultipartFile[] file, @ModelAttribute BoardVO vo) throws Exception { // 210325 파일 다중 업로드
+		// MultipartFile[] 앞에 @RequestParam 없으면 에러남
 		
-    	// 파일의 원본이름 저장
-        String savedName = file.getOriginalFilename();
-    	
-        logger.info("파일이름 :"+file.getOriginalFilename());
-        logger.info("파일크기 : "+file.getSize());
-        logger.info("컨텐트 타입 : "+file.getContentType());
-        
-        if(file.getOriginalFilename() == null || file.getOriginalFilename() == "") {
-        	
-        }
-        else {
-        	// 랜덤생성+파일이름 저장
-            // 파일명 랜덤생성 메서드호출
-            savedName = uploadFile(savedName, file.getBytes());
+        List<Map<String, Object>> fileList = new ArrayList<Map<String, Object>>();
 
-            File target = new File(uploadPath, savedName);
+        for(int i=0; i<file.length; i++) {
+        	String savedName = file[i].getOriginalFilename();
+        	File target = new File(uploadPath, savedName);
+            if(!target.exists()) target.mkdirs();
 
-            // 임시디렉토리에 저장된 업로드된 파일을 지정된 디렉토리로 복사
-            // FileCopyUtils.copy(바이트배열, 파일객체)
+            String orgFileName = file[i].getOriginalFilename();
+            String orgFileExtension = orgFileName.substring(orgFileName.lastIndexOf("."));
+            String saveFileName = UUID.randomUUID().toString().replaceAll("-", "") + orgFileExtension;
+            Long saveFileSize = file[i].getSize();
             
-            FileCopyUtils.copy(file.getBytes(), target);
+            logger.info("================== file start ==================");
+            logger.info("파일 실제 이름: "+orgFileName);
+            logger.info("파일 저장 이름: "+saveFileName);
+            logger.info("파일 크기: "+saveFileSize);
+            logger.info("content type: "+file[i].getContentType());
+            logger.info("================== file   END ==================");
+ 
+            target = new File(uploadPath, saveFileName);
+            file[i].transferTo(target);
+            
+            Map<String, Object> fileInfo = new HashMap<String, Object>();
+ 
+            fileInfo.put("ORG_FILE_NAME", orgFileName);
+            fileInfo.put("SAVE_FILE_NAME", saveFileName);
+            fileInfo.put("FILE_SIZE", saveFileSize);
+            fileList.add(fileInfo);
+            
+
+			 if(file[i].getOriginalFilename() == null || file[i].getOriginalFilename() == "") {
+		        	
+		        }
+		        else {
+		        	// 랜덤생성+파일이름 저장
+		            // 파일명 랜덤생성 메서드호출
+		            savedName = uploadFile(savedName, file[i].getBytes());
+
+
+		        }
+			 
+			 
+			 new ResponseEntity<String>(uploadFile(uploadPath, file[i].getOriginalFilename(), file[i].getBytes()), HttpStatus.OK);
         }
-		
-		sampleService.writeBoard(vo);
-		
-		new ResponseEntity<String>(uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes()), HttpStatus.OK);
-		
+
+		sampleService.writeBoard(file, vo, fileList);
+
 		return "redirect:/sample/board.do";
 	}		
 	
@@ -159,9 +181,7 @@ public class SampleController {
         // 랜덤생성+파일이름 저장
         String savedName = uuid.toString()+"_"+originalName;
         File target = new File(uploadPath, savedName);
-        // 임시디렉토리에 저장된 업로드된 파일을 지정된 디렉토리로 복사
-        // FileCopyUtils.copy(바이트배열, 파일객체)
-        FileCopyUtils.copy(fileData, target);
+
         return savedName;
     }
 	

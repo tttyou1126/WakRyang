@@ -17,3 +17,16 @@ CREATE TABLE `del_tb_board` (
 
 ALTER TABLE `test`.`tbl_reply` 
 ADD COLUMN `secret_reply` VARCHAR(45) NULL AFTER `updatedate`;
+
+
+
+-- 210325 파일 업로드 테이블
+
+CREATE TABLE `tbl_attach` (
+  `fullname` varchar(300) NOT NULL,
+  `bno` int NOT NULL,
+  `regdate` datetime DEFAULT NULL,
+  PRIMARY KEY (`fullname`),
+  KEY `IDX_idx` (`bno`),
+  CONSTRAINT `IDX` FOREIGN KEY (`bno`) REFERENCES `tb_board` (`IDX`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

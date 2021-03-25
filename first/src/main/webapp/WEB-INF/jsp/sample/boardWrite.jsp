@@ -131,9 +131,15 @@ to {
 					<td>${sessionScope.userName}</td>
 				</tr>
 				<tr>
+				<!-- 210325 파일 다중 업로드 -->
 					<td colspan="2" style="text-align: left;">
-				        <input type="file" name="file"> 
-					</th>
+				       <div class="form-group" id="file-list">
+        				<a href="#this" onclick="addFile()">파일추가</a>
+				        <div class="file-group">
+				            <input type="file" name="file" multiple="multiple"><a href='#this' name='file-delete'>삭제</a>
+				        </div>
+    					</div>
+
 				</tr>				
 			</tbody>
 		</table>
@@ -167,51 +173,8 @@ to {
 			fn_insertBoard();
 
 		});
-		
-		
-		
-		
-		
-		
-		
-		$(".fileDrop").on("drop", function(event) {
-		    event.preventDefault(); 
-		    var files = event.originalEvent.dataTransfer.files;
-		    var file = files[0];
-		    console.log(file);
-		    var formData = new FormData();
-		    formData.append("file", file);
 
-		    $.ajax({
-		        type: "post",
-		        url: "${path}/upload/uploadAjax",
-		        data: formData,
-		        dataType: "text",
-		        processData: false,
-		        contentType: false,
-		        // 업로드 성공하면
-		        success: function(data) {
-		            var str = "";
-		            // 이미지 파일이면 썸네일 이미지 출력
-		            if(checkImageType(data)){ 
-		                str = "<div><a href='${path}/upload/displayFile?fileName="+getImageLink(data)+"'>";
-		                str += "<img src='${path}/upload/displayFile?fileName="+data+"'></a>";
-		            // 일반파일이면 다운로드링크
-		            } else { 
-		                str = "<div><a href='${path}/upload/displayFile?fileName="+data+"'>"+getOriginalName(data)+"</a>";
-		            }
-		            // 삭제 버튼
-		            str += "<span data-src="+data+">[삭제]</span></div>";
-		            $(".uploadedList").append(str);
-		        }
-		    });
-		});
-		
-		
-		
-		
-		
-		
+
 
 	});
 		
@@ -226,6 +189,20 @@ to {
 			comSubmit.setUrl("<c:url value = '/sample/writeBoard.do' />");
 			comSubmit.submit();
 		}
+		
+
+		function addFile() {
+	        var str = "<div class='file-group'><input type='file' name='file' multiple='multiple'><a href='#this' name='file-delete'>삭제</a></div>";
+	        $("#file-list").append(str);
+	        $("a[name='file-delete']").on("click", function(e) {
+	            e.preventDefault();
+	            deleteFile($(this));
+	        });
+	    }
+	 
+	    function deleteFile(obj) {
+	        obj.parent().remove();
+	    }
 		
 	</script>
 </body>

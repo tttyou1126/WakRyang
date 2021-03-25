@@ -6,7 +6,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class CommandMap {
-	Map<String, Object> map = new HashMap<String, Object>();
+	static Map<String, Object> map = new HashMap<String, Object>();
 
 	public Object get(String key) {
 		return map.get(key);
@@ -48,7 +48,7 @@ public class CommandMap {
 		map.putAll(m);
 	}
 
-	public Map<String, Object> getMap() {
+	public static Map<String, Object> getMap() {
 		return map;
 	}
 }

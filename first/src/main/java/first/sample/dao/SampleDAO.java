@@ -1,6 +1,7 @@
 package first.sample.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -52,6 +53,7 @@ public interface SampleDAO {
 
 	public int countArticle(String searchOption, String keyword);
 
+	public void addAttach(Map<String, Object> map);
 
 
 

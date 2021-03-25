@@ -86,6 +86,12 @@ public class SampleDAOImpl implements SampleDAO {
 		sqlSession.delete("sample.deleteBoard", iDX);
 		
 	}
+	
+	 // 210325 파일 다중 업로드
+	@Override
+	public void addAttach(Map<String, Object> map) {
+		sqlSession.insert("sample.addAttach", map);
+	}
 
 
 
