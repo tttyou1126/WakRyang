@@ -1,0 +1,1 @@
+https://github.com/angelozerr/tern.java/releases/download/tern.java-1.2.1/tern.repository-1.2.1.zip
