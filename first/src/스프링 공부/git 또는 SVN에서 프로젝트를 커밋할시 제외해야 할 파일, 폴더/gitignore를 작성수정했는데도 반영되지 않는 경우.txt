@@ -8,3 +8,8 @@ git bash -> 해당 프로젝트로 이동
 'git rm -r --cached' 명령 입력 후
 
 'git add . && git commit -m "cache removed" && git push' 입력
+
+
+
+
+작업 중인 pc 모두에서 수행해야 됨
