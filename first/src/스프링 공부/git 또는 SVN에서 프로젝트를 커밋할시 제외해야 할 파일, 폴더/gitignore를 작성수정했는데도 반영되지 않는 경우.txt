@@ -1,0 +1,10 @@
+
+
+깃의 캐쉬 역할 때문에 발생하는 현상이다.
+ 
+
+git bash -> 해당 프로젝트로 이동
+
+'git rm -r --cached' 명령 입력 후
+
+'git add . && git commit -m "cache removed" && git push' 입력
