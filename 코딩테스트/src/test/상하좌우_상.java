@@ -81,21 +81,21 @@ public class 상하좌우_상 {
         // L, R, U, D에 따른 이동 방향 
         int[] dx = {0, 0, -1, 1};
         int[] dy = {-1, 1, 0, 0};
-        char[] moveTypes = {'L', 'R', 'U', 'D'};
+        String[] moveTypes = {"L", "R", "U", "D"}; // == 문자열 비교 위해서는 char로 선언해야함 String으로 선언 시에는 equals함수 사용
 
         // 이동 계획을 하나씩 확인
         for (int i = 0; i < plans.length; i++) {
-            char plan = plans[i].charAt(0); // charAt(0) - 배열의 첫 번째 문자
+            // char plan = plans[i].charAt(0); // charAt(0) - 배열의 첫 번째 문자 (== 문자열 비교 위해서는 char로 선언해야함 String으로 선언 시에는 equals함수 사용)
             // 이동 후 좌표 구하기 
             int nx = -1, ny = -1; // 초기 값이므로 값은 상관없음 
             for (int j = 0; j < 4; j++) {
-                if (plan == moveTypes[j]) {
+                if (plans[i].equals(moveTypes[j])) { // plan == moveTypes[j]으로도 문자열 비교 가능
                     nx = x + dx[j];
                     ny = y + dy[j];
                 }
             }
             // 공간을 벗어나는 경우 무시 
-            if (nx < 1 || ny < 1 || nx > n || ny > n) continue;
+            if (nx < 1 || ny < 1 || nx > n || ny > n) continue; // 해당 반복부분 탈출 후 다음반복실행(즉, 아래 x,y 대입 무시됨)
             // 이동 수행 
             x = nx;
             y = ny;
