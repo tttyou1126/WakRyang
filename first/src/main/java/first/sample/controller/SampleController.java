@@ -101,7 +101,7 @@ public class SampleController {
 
             String orgFileName = file[i].getOriginalFilename();
             String orgFileExtension = orgFileName.substring(orgFileName.lastIndexOf("."));
-            String saveFileName = UUID.randomUUID().toString().replaceAll("-", "") + orgFileExtension;
+            String saveFileName = UUID.randomUUID().toString().replaceAll("-", "") + orgFileExtension ;
             Long saveFileSize = file[i].getSize();
             
             logger.info("================== file start ==================");
@@ -118,6 +118,7 @@ public class SampleController {
  
             fileInfo.put("ORG_FILE_NAME", orgFileName);
             fileInfo.put("SAVE_FILE_NAME", saveFileName);
+            fileInfo.put("ORDER", i); // 210428 파일 순서 추가
             fileInfo.put("FILE_SIZE", saveFileSize);
             fileList.add(fileInfo);
             

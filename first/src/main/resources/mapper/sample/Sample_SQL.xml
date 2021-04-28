@@ -106,11 +106,13 @@
 	</delete>
 	
 	
-	<insert id="addAttach"> <!-- 210325 파일 다중 업로드 데이터 적재 쿼리 -->
+	<insert id="addAttach"> 
+	<!-- 210325 파일 다중 업로드 데이터 적재 쿼리 --> 
+	<!-- 210428 파일 정보 추가(원본명, 순서, 크기) -->
 	    INSERT INTO tbl_attach (
-	        fullname, bno, regdate
+	        fullname, originalname, bno, orders, filesize, regdate
 	    ) VALUES (
-	        #{SAVE_FILE_NAME}, (select id from seq_mysql where seq_name = 'seq_board'), SYSDATE()
+	        #{SAVE_FILE_NAME}, #{ORG_FILE_NAME}, (select id from seq_mysql where seq_name = 'seq_board'), #{ORDER}, #{FILE_SIZE}, SYSDATE()
 	    )
 	</insert>
 
