@@ -151,6 +151,7 @@ public class SampleController {
 	@RequestMapping("sample/viewBoard.do")
 	public String viewBoard(int IDX, Model model) throws Exception {
 		model.addAttribute("dto", sampleService.viewBoard(IDX));
+		model.addAttribute("file", sampleService.fileList(IDX)); // 210503 첨부파일 보여주기
 		return "sample/boardDetail";
 	}
 	

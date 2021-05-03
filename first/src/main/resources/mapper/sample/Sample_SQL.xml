@@ -110,11 +110,26 @@
 	<!-- 210325 파일 다중 업로드 데이터 적재 쿼리 --> 
 	<!-- 210428 파일 정보 추가(원본명, 순서, 크기) -->
 	    INSERT INTO tbl_attach (
-	        fullname, originalname, bno, orders, filesize, regdate
+	        fullname, originalname, bno, orders, filesize, regdate, DEL_GB
 	    ) VALUES (
-	        #{SAVE_FILE_NAME}, #{ORG_FILE_NAME}, (select id from seq_mysql where seq_name = 'seq_board'), #{ORDER}, #{FILE_SIZE}, SYSDATE()
+	        #{SAVE_FILE_NAME}, #{ORG_FILE_NAME}, (select id from seq_mysql where seq_name = 'seq_board'), #{ORDER}, #{FILE_SIZE}, SYSDATE(), 'N'
 	    )
 	</insert>
 
+	<!-- 210503 첨부파일 보여주기 -->
+	<select id="selectFileList" resultType="first.sample.vo.BoardVO">
+		<![CDATA[
+			SELECT
+			    fullname,
+			    originalname,
+			    ROUND(filesize/1024,1) AS filesize
+			FROM
+			    tbl_attach
+			WHERE
+			    bno = #{bno}
+			    AND DEL_GB = 'N'
+			ORDER BY bno desc,orders
+		]]>
+	</select>
 
 </mapper>

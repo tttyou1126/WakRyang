@@ -14,6 +14,9 @@ public class BoardVO {
 	private String CREA_ID;
 	private int recnt;            // **게시글 댓글의 수 추가
 	private String[] files; // 210325 파일 다중 업로드
+	private String fullname; // 210503 첨부파일 보여주기
+	private String originalname; // 210503 첨부파일 보여주기
+	private int filesize; // 210503 첨부파일 보여주기
 	
 	public int getRecnt() {
 		return recnt;
@@ -77,11 +80,33 @@ public class BoardVO {
 	public void setFiles(String[] files) {
 		this.files = files;
 	}
+	
+	public String getFullname() {
+		return fullname;
+	}
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
+	}
+	public String getOriginalname() {
+		return originalname;
+	}
+	public void setOriginalname(String originalname) {
+		this.originalname = originalname;
+	}
+
+	
 	@Override
 	public String toString() {
 		return "BoardVO [IDX=" + IDX + ", PARENT_IDX=" + PARENT_IDX + ", TITLE=" + TITLE + ", CONTENTS=" + CONTENTS
 				+ ", CREA_DTM=" + CREA_DTM + ", HIT_CNT=" + HIT_CNT + ", DEL_GB=" + DEL_GB + ", CREA_ID=" + CREA_ID
-				+ ", recnt=" + recnt + ", files=" + Arrays.toString(files) + "]";
+				+ ", recnt=" + recnt + ", files=" + Arrays.toString(files) + ", fullname=" + fullname
+				+ ", originalname=" + originalname + ", filesize=" + filesize + "]";
+	}
+	public int getFilesize() {
+		return filesize;
+	}
+	public void setFilesize(int filesize) {
+		this.filesize = filesize;
 	}
 	
 }

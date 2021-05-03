@@ -83,3 +83,20 @@ CREATE TABLE `tbl_attach` (
   KEY `IDX_idx` (`bno`),
   CONSTRAINT `IDX` FOREIGN KEY (`bno`) REFERENCES `tb_board` (`IDX`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+
+-- 210503 업로드 테이블 수정
+CREATE TABLE `tbl_attach` (
+  `fullname` varchar(300) NOT NULL,
+  `originalname` varchar(300) NOT NULL,
+  `bno` int NOT NULL,
+  `orders` int NOT NULL,
+  `filesize` int NOT NULL,
+  `regdate` datetime NOT NULL,
+  `DEL_GB` varchar(1) NOT NULL,
+  PRIMARY KEY (`fullname`),
+  KEY `IDX_idx` (`bno`),
+  CONSTRAINT `IDX` FOREIGN KEY (`bno`) REFERENCES `tb_board` (`IDX`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

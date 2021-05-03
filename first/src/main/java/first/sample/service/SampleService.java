@@ -13,7 +13,9 @@ public interface SampleService {
 
 	void writeBoard(MultipartFile[] file, BoardVO vo, List<Map<String, Object>> fileList) throws Exception;
 
-	BoardVO viewBoard(int iDX);
+	// BoardVO viewBoard(int iDX);
+	
+	BoardVO viewBoard(int IDX);
 
 	void updateBoard(BoardVO vo);
 
@@ -22,6 +24,7 @@ public interface SampleService {
 	void deleteBoard(int iDX);
 
 	public int countArticle(String searchOption, String keyword);
-	
+
+	List<BoardVO> fileList(int IDX); // 210503 첨부파일 보여주기
 
 }

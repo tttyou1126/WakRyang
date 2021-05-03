@@ -81,6 +81,12 @@ public class SampleServiceImpl implements SampleService {
 	}
 
 
+	@Override
+	public List<BoardVO> fileList(int IDX) { // 210503 첨부파일 보여주기
+		return sampleDAO.fileList(IDX);
+	}
+
+
 
 	
 

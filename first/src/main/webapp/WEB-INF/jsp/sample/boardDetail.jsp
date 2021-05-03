@@ -139,11 +139,29 @@ to {
 				<td colspan="3">${dto.TITLE }</td>
 			</tr>
 			<tr>
-				<td colspan="4">${dto.CONTENTS }</td>
+				
+				<td colspan="4"><div align="left">${dto.CONTENTS }</div></td>
+				
+			</tr>
+			<!-- 210503 첨부파일 보여주기 -->
+			<tr>
+				<th scope="row">첨부파일</th>
+				<td colspan="3">
+				<div align="left">
+					<c:forEach var="row" items="${file }" varStatus="status">
+					<input type="hidden" id="IDX" value="${row.fullname }"> 
+					<a href="#this" name="file">${row.originalname }</a> 
+					(${row.filesize }kb)
+					</c:forEach>
+				</div>	
+				</td>
 			</tr>
 		</tbody>
 	</table>
 	</form>
+	
+
+
 	<div align="right">
 	<a href="#this" class="btn" id="list">목록으로</a>
 
@@ -158,6 +176,9 @@ to {
 		
 	</c:otherwise>
 </c:choose>	
+
+
+
 
 	<div align="left">
         <br>

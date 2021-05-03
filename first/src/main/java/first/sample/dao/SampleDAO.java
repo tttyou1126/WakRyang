@@ -55,6 +55,8 @@ public interface SampleDAO {
 
 	public void addAttach(Map<String, Object> map);
 
+	public List<BoardVO> fileList(int IDX); // 210503 첨부파일 보여주기
+
 
 
 }

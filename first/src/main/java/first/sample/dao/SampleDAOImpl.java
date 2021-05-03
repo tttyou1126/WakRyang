@@ -93,6 +93,11 @@ public class SampleDAOImpl implements SampleDAO {
 		sqlSession.insert("sample.addAttach", map);
 	}
 
+	@Override
+	public List<BoardVO> fileList(int IDX) {
+		return sqlSession.selectList("sample.selectFileList", IDX); // 210503 첨부파일 보여주기
+	}
+
 
 
 
