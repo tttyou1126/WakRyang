@@ -26,5 +26,7 @@ public interface SampleService {
 	public int countArticle(String searchOption, String keyword);
 
 	List<BoardVO> fileList(int IDX); // 210503 첨부파일 보여주기
+	
+	List<BoardVO> selectFileInfo(String fullname) throws Exception; // 210503 파일 다운로드
 
 }

@@ -87,8 +87,10 @@ public class SampleServiceImpl implements SampleService {
 	}
 
 
-
-	
+	@Override
+	public List<BoardVO> selectFileInfo(String fullname) throws Exception { // 210503 첨부파일 다운로드
+		return sampleDAO.selectFileInfo(fullname); 
+	}
 
 
 

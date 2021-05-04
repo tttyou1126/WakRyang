@@ -36,6 +36,11 @@ function ComSubmit(opt_formId) {
 		frm.method = "post";
 		frm.submit();
 	};
+	
+	this.empty = function empty() { // 210504 파일 다운로드 (addparam할 시 뒤에 파일명 덧붙여지므로 초기화 필요)
+		$("#" + this.formId).empty();
+	};
+	
 }
 
 

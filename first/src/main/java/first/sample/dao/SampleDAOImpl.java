@@ -94,8 +94,13 @@ public class SampleDAOImpl implements SampleDAO {
 	}
 
 	@Override
-	public List<BoardVO> fileList(int IDX) {
-		return sqlSession.selectList("sample.selectFileList", IDX); // 210503 첨부파일 보여주기
+	public List<BoardVO> fileList(int IDX) { // 210503 첨부파일 보여주기
+		return sqlSession.selectList("sample.selectFileList", IDX); 
+	}
+
+	@Override
+	public List<BoardVO> selectFileInfo(String fullname) { // 210503 첨부파일 다운로드
+		return sqlSession.selectOne("sample.selectFileInfo", fullname); 
 	}
 
 

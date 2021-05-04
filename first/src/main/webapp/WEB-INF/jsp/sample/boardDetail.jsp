@@ -148,9 +148,10 @@ to {
 				<th scope="row">첨부파일</th>
 				<td colspan="3">
 				<div align="left">
-					<c:forEach var="row" items="${file }" varStatus="status">
-					<input type="hidden" id="IDX" value="${row.fullname }"> 
-					<a href="#this" name="file">${row.originalname }</a> 
+				
+					<c:forEach var="row" items="${file }">
+					<input type="hidden" name="fullname" id="fullname" value="${row.fullname }"> 
+					<a href="#this" class="file" value="${row.fullname }">${row.originalname }</a> <!-- id는 유니크 값이어야 하므로 class값으로 해야됨 -->
 					(${row.filesize }kb)
 					</c:forEach>
 				</div>	
@@ -254,6 +255,12 @@ to {
                    }
             });
         });
+        
+        $(".file").on("click", function(e){ // 210503 파일 다운로드
+        	e.preventDefault(); 
+        	fn_downloadFile($(this).attr('value')); 
+        });
+
 	}); 
 	function fn_openBoardList(){ 
 		var comSubmit = new ComSubmit(); 
@@ -312,7 +319,15 @@ to {
         strDate = year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second;
         return strDate;
     }
-
+    
+    function fn_downloadFile(fullname1){ // 210504 파일 다운로드 
+    	var fullname = fullname1;
+    	var comSubmit = new ComSubmit(); 
+    	comSubmit.empty(); // addparam할 시 뒤에 파일명 덧붙여지므로 초기화 필요
+    	comSubmit.setUrl("<c:url value='/sample/downloadFile.do' />"); 
+    	comSubmit.addParam("fullname", fullname); 
+    	comSubmit.submit(); 
+    }
 	
 	</script>
 </body>

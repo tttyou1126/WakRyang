@@ -57,6 +57,8 @@ public interface SampleDAO {
 
 	public List<BoardVO> fileList(int IDX); // 210503 첨부파일 보여주기
 
+	public List<BoardVO> selectFileInfo(String fullname); // 210503 첨부파일 다운로드
+
 
 
 }

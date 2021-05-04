@@ -9,4 +9,4 @@
 <!-- jQuery -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="<c:url value='/js/common.js'/>" charset="utf-8"></script>
+<script src="<c:url value='/js/common.js?ver=1'/>" charset="utf-8"></script>  <!-- 210504 js파일 소스 수정해도 반영되지 않는 현상 해결 ?ver=1 붙이면 됨(숫자 상관없음) -->

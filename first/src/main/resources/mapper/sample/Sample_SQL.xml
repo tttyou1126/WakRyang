@@ -131,5 +131,19 @@
 			ORDER BY bno desc,orders
 		]]>
 	</select>
+	
+	<!-- 210503 첨부파일 다운로드 -->
+	<select id="selectFileInfo" resultType="first.sample.vo.BoardVO">
+		<![CDATA[
+			SELECT distinct
+			    fullname,
+			    originalname
+			FROM
+			    tbl_attach
+			WHERE
+			    fullname = #{fullname}
+		]]>
+	</select>
+	
 
 </mapper>
