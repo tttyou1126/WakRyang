@@ -192,7 +192,7 @@ to {
         </span>
 		
 		<button type="submit" class='sch_smit' name="test"> 조회 </button>
-		
+
 <c:choose>
 	<c:when test="${sessionScope.userId == null}">
 		<div id="writeDisable"><a href="javascript:writeDisable()"><span style="background-color:#000000"><font color="WHITE" style="font-weight:bolder">글쓰기</font></span></a></div>
@@ -304,8 +304,10 @@ to {
 				e.preventDefault();
 				fn_openBoardWrite();
 			});
+			
+			
 		});
-
+		
 			function fn_openBoardWrite(){
 				var comSubmit = new ComSubmit();
 				comSubmit.setUrl("<c:url value = '/sample/writeScreen.do' />");
