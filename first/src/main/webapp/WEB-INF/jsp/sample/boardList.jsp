@@ -113,6 +113,42 @@ to {
 }
 /* 0% {color:white;} 30% {color: yellow;} 100% {color:red; font-weight: bold;} */
 }
+
+/* 네이버 검색창 css*/
+.green_window0 {
+	display: inline-block;
+	width: 126px;
+	border: 2px solid #2db400;
+}
+.green_window {
+	display: inline-block;
+	width: 366px;
+	border: 3px solid #2db400;
+}
+.input_text {
+	width: calc( 100% - 14px );
+	margin: 6px 7px;
+	border: 0;
+	font-weight: bold;
+	font-size: 16px;
+	outline: none;
+}
+.sch_smit {
+	width: 54px; height: 40px;
+	margin: 0; border: 0;
+	vertical-align: top;
+	background: #22B600;
+	color: white;
+	font-weight: bold;
+	border-radius: 1px;
+	cursor: pointer;
+}
+.sch_smit:hover {
+	background: #56C82C;
+}
+
+
+
 </style>
 </head>
 
@@ -142,7 +178,7 @@ to {
 		</div>
 		
 		
-		
+		<span class='green_window0'>
 	    <select name="searchOption">
             <!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
             <option value="all" <c:out value="${searchOption == 'all'?'selected':''}"/> >제목+ID+내용</option>
@@ -150,9 +186,12 @@ to {
             <option value="CONTENTS" <c:out value="${searchOption == 'CONTENTS'?'selected':''}"/> >내용</option>
             <option value="TITLE" <c:out value="${searchOption == 'TITLE'?'selected':''}"/> >제목</option>
         </select>
-        <input name="keyword" value=${keyword}>	
+        </span>
+        <span class='green_window'>
+        <input type='text' class='input_text' name="keyword" value=${keyword}>	
+        </span>
 		
-		<input type="submit" name="test" value="조회">
+		<button type="submit" class='sch_smit' name="test"> 조회 </button>
 		
 <c:choose>
 	<c:when test="${sessionScope.userId == null}">
