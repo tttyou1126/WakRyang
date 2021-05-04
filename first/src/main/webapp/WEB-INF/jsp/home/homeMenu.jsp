@@ -48,43 +48,62 @@
 					role="navigation">
 
 					<ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
-						<li class="active"><a href="${path}/home/sunhome.do">메인</a></li>
-						<li><a href="${path}/sample/board.do">게시판</a></li>
-						<li class="has-children"><a href="single.html">Gallery</a>
+						<li class="active"><a href="${path}/home/sunhome.do">Main</a></li>
+						<li class="has-children"><a href="single.html">introduction</a>
 							<ul class="dropdown">
-								<li><a href="#">Nature</a></li>
-								<li><a href="#">Portrait</a></li>
-								<li><a href="#">People</a></li>
-								<li><a href="#">Architecture</a></li>
-								<li><a href="#">Animals</a></li>
-								<li><a href="#">Sports</a></li>
-								<li><a href="#">Travel</a></li>
-								<li class="has-children"><a href="#">Sub Menu</a>
+								<li><a href="#">About Me</a></li>
+								<li><a href="#">Skill</a></li>
+								<li><a href="#">Project</a></li>
+								<li><a href="#">Career</a></li>
+								<li><a href="#">Resume</a></li>
+								<li class="has-children"><a href="#">Trail Development</a>
 									<ul class="dropdown">
-										<li><a href="#">Menu One</a></li>
-										<li><a href="#">Menu Two</a></li>
-										<li><a href="#">Menu Three</a></li>
+										<li><a href="https://github.com/tttyou1126">GitHub</a></li>
+										<li><a href="#">Blog</a></li>
 									</ul></li>
 							</ul></li>
-						<li><a href="services.html">Services</a></li>
-						<li><a href="${path}/home/about.do">About</a></li>
+							<li class="has-children"><a href="single.html">Practice</a>
+							<ul class="dropdown">
+								<li><a href="${path}/sample/board.do">Board</a></li>
+								
+								<%-- 210504 날씨 api --%>
+								<li class="has-children">
+									<a href="#">Weather</a>
+								<ul class="dropdown">
+									<li><a href="#">
+										<div class="seoul_CurrIcon"></div>
+										</a>
+									</li>
+									<li><a href="#">
+										<div class="incheon_CurrIcon"></div>
+										</a>
+									</li>
+									<li><a href="#">
+										<div class="wonju_CurrIcon"></div>
+										</a>
+									</li>
+									<li><a href="#">
+										<div class="busan_CurrIcon"></div>
+										</a>
+									</li>
+									<li><a href="#">
+										<div class="gwangju_CurrIcon"></div>
+										</a>
+									</li>
+									<li><a href="#">
+										<div class="jeju_CurrIcon"></div>
+										</a>
+									</li>
+								</ul>
+								</li>
+							</ul>
+							</li>
 						<li><a href="contact.html">Contact</a></li>
+
 
 						<c:if test="${sessionScope.userAuth == 'ADMIN'}">
 							<li><a href="${path}/member/list.do">회원관리</a></li>
-						</c:if>
-						<li></li><li></li><li></li><li></li>
-						<%-- 210504 날씨 api --%>
-						<li>
-							<div class="CurrIcon"></div>
-						</li>
-						<li>
-							<div class="CurrTemp"></div>
-						</li>
-						<li>
-							<div class="City"></div>
-						</li>
-						
+						</c:if>				
 					</ul>
 				</nav>
 			</div>
@@ -146,10 +165,79 @@
 										var $Icon = (data.weather[0].icon).substr(0, 2);
 										var $Temp = Math.floor(data.main.temp) + 'º';
 										var $city = data.name;
-										$('.CurrIcon').append('<i class="' + weatherIcon[$Icon] +'"></i>');
-										$('.CurrTemp').prepend($Temp);
-										$('.City').append($city);
+										$('.seoul_CurrIcon').append($city);
+										$('.seoul_CurrIcon').append('<i class="' + weatherIcon[$Icon] +'"></i>');
+										$('.seoul_CurrIcon').append($Temp);
+										
+										
+										
 									}
 								})
+						$.ajax({  
+									url : 'http://api.openweathermap.org/data/2.5/weather?q=jeju&APPID=2e376c0b2999c2284b43c3e128124930&units=metric',
+									dataType : 'json',
+									type : 'GET',
+									success : function(data) {
+										var $Icon = (data.weather[0].icon).substr(0, 2);
+										var $Temp = Math.floor(data.main.temp) + 'º';
+										var $city = data.name;
+										$('.jeju_CurrIcon').append($city);
+										$('.jeju_CurrIcon').append('<i class="' + weatherIcon[$Icon] +'"></i>');
+										$('.jeju_CurrIcon').append($Temp);
+									}
+								})
+						$.ajax({  
+									url : 'http://api.openweathermap.org/data/2.5/weather?q=busan&APPID=2e376c0b2999c2284b43c3e128124930&units=metric',
+									dataType : 'json',
+									type : 'GET',
+									success : function(data) {
+										var $Icon = (data.weather[0].icon).substr(0, 2);
+										var $Temp = Math.floor(data.main.temp) + 'º';
+										var $city = data.name;
+										$('.busan_CurrIcon').append($city);
+										$('.busan_CurrIcon').append('<i class="' + weatherIcon[$Icon] +'"></i>');
+										$('.busan_CurrIcon').append($Temp);
+									}
+								})
+						$.ajax({  
+									url : 'http://api.openweathermap.org/data/2.5/weather?q=gwangju&APPID=2e376c0b2999c2284b43c3e128124930&units=metric',
+									dataType : 'json',
+									type : 'GET',
+									success : function(data) {
+										var $Icon = (data.weather[0].icon).substr(0, 2);
+										var $Temp = Math.floor(data.main.temp) + 'º';
+										var $city = data.name;
+										$('.gwangju_CurrIcon').append($city);
+										$('.gwangju_CurrIcon').append('<i class="' + weatherIcon[$Icon] +'"></i>');
+										$('.gwangju_CurrIcon').append($Temp);
+									}
+								})
+						$.ajax({  
+									url : 'http://api.openweathermap.org/data/2.5/weather?q=incheon&APPID=2e376c0b2999c2284b43c3e128124930&units=metric',
+									dataType : 'json',
+									type : 'GET',
+									success : function(data) {
+										var $Icon = (data.weather[0].icon).substr(0, 2);
+										var $Temp = Math.floor(data.main.temp) + 'º';
+										var $city = data.name;
+										$('.incheon_CurrIcon').append($city);
+										$('.incheon_CurrIcon').append('<i class="' + weatherIcon[$Icon] +'"></i>');
+										$('.incheon_CurrIcon').append($Temp);
+									}
+								})
+								
+						$.ajax({  
+									url : 'http://api.openweathermap.org/data/2.5/weather?q=wonju&APPID=2e376c0b2999c2284b43c3e128124930&units=metric',
+									dataType : 'json',
+									type : 'GET',
+									success : function(data) {
+										var $Icon = (data.weather[0].icon).substr(0, 2);
+										var $Temp = Math.floor(data.main.temp) + 'º';
+										var $city = data.name;
+										$('.wonju_CurrIcon').append($city);
+										$('.wonju_CurrIcon').append('<i class="' + weatherIcon[$Icon] +'"></i>');
+										$('.wonju_CurrIcon').append($Temp);
+									}
+								})		
 					});
 </script>
