@@ -49,12 +49,18 @@
 
 					<ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
 						<li class="active"><a href="${path}/home/sunhome.do">Main</a></li>
-						<li class="has-children"><a href="single.html">introduction</a>
+						<li class="has-children"><a href="/direct_jsp/aboutMe.jsp">introduction</a>
 							<ul class="dropdown">
-								<li><a href="#">About Me</a></li>
-								<li><a href="#">Skill</a></li>
-								<li><a href="#">Project</a></li>
-								<li><a href="#">Career</a></li>
+								<li><a href="/direct_jsp/aboutMe.jsp">About Me</a></li> 
+<%--  210511
+web 폴더
+장점	web 폴더(webapp)에 있을 경우 바로 jsp파일을 볼 수 있다. 앞서 확인한 것과 같이 작성한 jsp 파일의 경과를 바로 볼 수 있다.
+단점	web 폴더로 작성을 완료하고 프로젝트를 서버에 올릴 경우 유저가 jsp 파일에 직접 접근할 수 있어 보안의 취약함이 발생할 수 있다.
+
+WEB-INF 폴더
+장점	WEB-INF 폴더에 있을 경우 localhost:8090/WEB-INF/test.jsp로 접근이 불가하다. 이로인해 유저의 직접 접근이 어렵워 보안성이 높다.
+단점	직접적으로 view를 볼 수 없다. 또한 직접적으로 볼 수 없기 때문에 <a> 앵커 태그로 이동이 불가하며 Controller를 통해서만 이동을 해야 한다.
+--%>
 								<li><a href="#">Resume</a></li>
 								<li class="has-children"><a href="#">Trail Development</a>
 									<ul class="dropdown">
@@ -142,10 +148,8 @@
 
 
 <script type="text/javascript">
-	$(document)
-			.ready(
-					<%-- 210504 날씨 api --%>
-					function() {
+	$(document).ready(function() {
+		<%-- 210504 날씨 api --%>
 						let weatherIcon = {
 							'01' : 'fas fa-sun',
 							'02' : 'fas fa-cloud-sun',
