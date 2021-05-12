@@ -42,8 +42,8 @@
 
    			<h5>문의</h5>
 
-            <!-- form -->
-            <form name="contactForm" id="contactForm" method="post">     			
+            <!-- form --> <!-- 210512 Contact화면 메일 전송 기능 추가 -->
+            <form action="${path}/home/mailSending.do" name="contactForm" id="contactForm" method="post">     			
 
                <div class="form-field">
  					   <input name="contactName" type="text" id="contactName" placeholder="Name" value="" minlength="2" required="">
@@ -78,7 +78,6 @@
 							</div>
 						</div>
                </div>
-
       		</form> <!-- end form -->
 
             <!-- contact-warning -->

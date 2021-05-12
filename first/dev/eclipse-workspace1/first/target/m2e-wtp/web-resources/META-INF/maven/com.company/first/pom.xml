@@ -165,6 +165,21 @@
 			<version>0.2.7</version>
 		</dependency>
 
+  <!-- Java Mail API --> <!-- 210512 Contact화면 메일 전송 기능 추가 -->
+  <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>javax.mail-api</artifactId>
+            <version>1.5.5</version>
+        </dependency>
+ 
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.7</version>
+        </dependency>
+
+
+
 	</dependencies>
 	<build>
 		<plugins>
