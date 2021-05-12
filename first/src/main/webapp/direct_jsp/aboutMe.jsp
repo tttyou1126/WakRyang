@@ -51,24 +51,6 @@
 			</symbol>
 		</svg>
 		<main>
-			<div class="frame">
-				<header class="codrops-header">
-					<h1 class="codrops-header__title">Diagonal Slideshow</h1>
-					<div class="codrops-links">
-						<a class="github" href="https://github.com/codrops/DiagonalSlideshow/">GitHub</a>
-						<a class="codrops-icon codrops-icon--prev" href="https://tympanus.net/Development/SlideOutBoxMenu/" title="Previous Demo">
-							<svg class="icon icon--arrow">
-								<use xlink:href="#icon-arrow"></use>
-							</svg>
-						</a>
-						<a class="codrops-icon codrops-icon--drop" href="https://tympanus.net/codrops/?p=35765" title="Back to the article">
-							<svg class="icon icon--drop">
-								<use xlink:href="#icon-drop"></use>
-							</svg>
-						</a>
-					</div>
-				</header>
-			</div>
 			<div class="slideshow">
 				<div class="slideshow__deco"></div>
 				<div class="slide">

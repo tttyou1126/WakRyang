@@ -1,0 +1,575 @@
+/* =================================================================== 
+ *
+ *  Infinity v1.0 Main Stylesheet
+ *  01-02-2017
+ *  ------------------------------------------------------------------
+ *
+ *  TOC:
+ *  01. webfonts and iconfonts
+ *  02. base style overrides
+ *  03. typography & general theme styles
+ *  04. preloader
+ *  05. forms
+ *  06. buttons
+ *  07. other components
+ *  08. common and reusable styles 
+ *  09. header styles
+ *  10. home
+ *  11. about
+ *  12. services
+ *  13. portfolio
+ *  14. testimonials
+ *  15. clients
+ *  16. contact
+ *  17. footer
+ *
+ * =================================================================== */
+
+
+/* ===================================================================
+ *  01. webfonts and iconfonts - (_document-setup)
+ *
+ * ------------------------------------------------------------------- */
+@import url("font-awesome/css/font-awesome.min.css");
+@import url("micons/micons.css");
+@import url("fonts.css");
+
+
+/* ===================================================================
+ *  02. base style overrides - (_document-setup)
+ *
+ * ------------------------------------------------------------------- */
+
+body {
+  background: #111111;
+  font-family: "librebaskerville-regular", serif;
+  font-size: 1.6rem;
+  line-height: 3rem;
+  color: #353535;
+  margin: 0;
+  padding: 0;
+}
+
+/* ------------------------------------------------------------------- 
+ * links - (_document-setup) 
+ * ------------------------------------------------------------------- */
+
+
+/* ------------------------------------------------------------------- 
+ * tables - (_document-setup.scss)  
+ * ------------------------------------------------------------------- */
+table {
+  border-width: 0;
+  width: 100%;
+  max-width: 100%;
+  font-family: "librebaskerville-regular", sans-serif;
+}
+
+th,
+td {
+  padding: 1.5rem 3rem;
+  text-align: left;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+th {
+  color: #151515;
+  font-family: "montserrat-bold", sans-serif;
+}
+
+td {
+  line-height: 1.5;
+}
+
+th:first-child,
+td:first-child {
+  padding-left: 0;
+}
+
+th:last-child,
+td:last-child {
+  padding-right: 0;
+}
+
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+/* ===================================================================
+ *  05. forms - (_forms.scss)
+ *
+ * ------------------------------------------------------------------- */
+fieldset {
+  border: none;
+}
+
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  display: block;
+  height: 2rem;
+  padding: 0.1rem 0.5rem;
+  border: 0;
+  outline: none;
+  vertical-align: middle;
+  color: #444444;
+  font-family: "montserrat-regular", sans-serif;
+  font-size: 1.4rem;
+  line-height: 3rem;
+  max-width: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.ss-custom-select {
+  position: relative;
+  padding: 0;
+}
+.ss-custom-select select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  text-indent: 0.01px;
+  text-overflow: '';
+  margin: 0;
+  line-height: 3rem;
+  vertical-align: middle;
+}
+.ss-custom-select select option {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.ss-custom-select select::-ms-expand {
+  display: none;
+}
+.ss-custom-select::after {
+  content: '\f0d7';
+  font-family: 'FontAwesome';
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  margin-top: -10px;
+  bottom: auto;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 18px;
+  text-align: center;
+  pointer-events: none;
+  color: #252525;
+}
+
+/* IE9 and below */
+.oldie .ss-custom-select::after {
+  display: none;
+}
+
+textarea {
+  min-height: 25rem;
+}
+
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  color: #000000;
+}
+
+label, legend {
+  font-family: "montserrat-bold", sans-serif;
+  font-size: 1.4rem;
+  margin-bottom: .6rem;
+  color: #020202;
+  display: block;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline;
+}
+
+label > .label-text {
+  display: inline-block;
+  margin-left: 1rem;
+  font-family: "montserrat-regular", sans-serif;
+  line-height: inherit;
+}
+
+label > input[type="checkbox"],
+label > input[type="radio"] {
+  margin: 0;
+  position: relative;
+  top: .15rem;
+}
+
+/* ------------------------------------------------------------------- 
+ * Style Placeholder Text - (_forms.scss)
+ * ------------------------------------------------------------------- */
+::-webkit-input-placeholder {
+  color: #8e8e8e;
+}
+
+:-moz-placeholder {
+  color: #8e8e8e;
+  /* Firefox 18- */
+}
+
+::-moz-placeholder {
+  color: #8e8e8e;
+  /* Firefox 19+ */
+}
+
+:-ms-input-placeholder {
+  color: #8e8e8e;
+}
+
+.placeholder {
+  color: #8e8e8e !important;
+}
+
+/* ------------------------------------------------------------------- 
+ * Change Autocomplete styles in Chrome - (_forms.scss)
+ * ------------------------------------------------------------------- */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: #fabc5a;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+
+/* ===================================================================
+ *  06. buttons - (_button-essentials.scss)
+ *
+ * ------------------------------------------------------------------- */
+.button,
+a.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  display: inline-block;
+  font-family: "montserrat-bold", sans-serif;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: .3rem;
+  height: 5.4rem;
+  line-height: 5.4rem;
+  padding: 0 3rem;
+  margin: 0 .3rem 1.2rem 0;
+  background: #A5A5A5;
+  color: #222222;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  border: none;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.button:hover,
+a.button:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+.button:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus {
+  background: #989898;
+  color: #000000;
+  outline: 0;
+}
+
+.button.button-primary,
+a.button.button-primary,
+button.button-primary,
+input[type="submit"].button-primary,
+input[type="reset"].button-primary,
+input[type="button"].button-primary {
+  background: #151515;
+  color: #FFFFFF;
+}
+
+.button.button-primary:hover,
+a.button.button-primary:hover,
+button.button-primary:hover,
+input[type="submit"].button-primary:hover,
+input[type="reset"].button-primary:hover,
+input[type="button"].button-primary:hover,
+.button.button-primary:focus,
+button.button-primary:focus,
+input[type="submit"].button-primary:focus,
+input[type="reset"].button-primary:focus,
+input[type="button"].button-primary:focus {
+  background: #030303;
+}
+
+button.full-width, .button.full-width {
+  width: 100%;
+  margin-right: 0;
+}
+
+button.medium, .button.medium {
+  height: 5.7rem !important;
+  line-height: 5.7rem !important;
+  padding: 0 1.8rem !important;
+}
+
+button.large, .button.large {
+  height: 6rem !important;
+  line-height: 6rem !important;
+  padding: 0rem 3rem !important;
+}
+
+button.stroke, .button.stroke {
+  background: transparent !important;
+  border: 3px solid #313131;
+  line-height: 4.8rem;
+}
+
+button.stroke.medium, .button.stroke.medium {
+  line-height: 5.1rem !important;
+}
+
+button.stroke.large, .button.stroke.large {
+  line-height: 5.4rem !important;
+}
+
+button.stroke:hover, .button.stroke:hover {
+  border: 3px solid #f9a828;
+  color: #f9a828;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+
+/* ===================================================================
+ *  16. contact - (_layout.scss)
+ *
+ * ------------------------------------------------------------------- */
+#contact {
+  background-color: #111111;
+  background-image: url(../images/contact-bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  padding: 1rem 0 1rem;
+  position: relative;
+}
+#contact .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .75;
+  background-color: #000000;
+}
+
+
+.contact-content {
+  max-width: 1024px;
+  margin-top: 3rem;
+  color: #FFFFFF;
+  z-index: 600;
+  position: relative;
+}
+.contact-content h5 {
+  color: #FFFFFF;
+  margin-bottom: 5.4rem;
+}
+.contact-content h6 {
+  color: #555555;
+  font-size: 1.4rem;
+}
+
+/* contact info */
+.contact-info .cinfo {
+  margin-bottom: 4.2rem;
+}
+
+/* contact form */
+#contact form {
+  margin-top: 0;
+  margin-bottom: 3rem;
+}
+#contact form .form-field {
+  position: relative;
+}
+#contact form .form-field:before, #contact form .form-field:after {
+  content: "";
+  display: table;
+}
+#contact form .form-field:after {
+  clear: both;
+}
+#contact form .form-field label {
+  font-family: "montserrat-bold", sans-serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  position: absolute;
+  bottom: 1.5rem;
+  right: 0;
+  text-transform: uppercase;
+  letter-spacing: .05rem;
+  padding: .1rem 1rem .1rem 1rem;
+  margin: 0;
+  color: #000000;
+  background: #f9a828;
+  border-radius: 3px;
+}
+#contact form .form-field label::after {
+  position: absolute;
+  right: 15px;
+  top: 1px;
+  margin-top: -6px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #f9a828;
+  content: "";
+}
+#contact form ::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+#contact form :-moz-placeholder {
+  color: rgba(255, 255, 255, 0.3);
+  /* Firefox 18- */
+}
+#contact form ::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.3);
+  /* Firefox 19+ */
+}
+#contact form :-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+#contact form .placeholder {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+#contact input[type="text"],
+#contact input[type="password"],
+#contact input[type="email"],
+#contact textarea {
+  width: 100%;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 3.6rem;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+#contact input[type="text"]:focus,
+#contact input[type="password"]:focus,
+#contact input[type="email"]:focus {
+  color: #FFFFFF;
+}
+
+#contact textarea {
+  min-height: 21rem;
+  padding: 1.8rem 2rem;
+}
+#contact textarea:focus {
+  color: #FFFFFF;
+}
+
+#contact button.submitform {
+  font-size: 1.5rem;
+  display: block;
+  letter-spacing: .2rem;
+  height: 6rem;
+  line-height: 6rem;
+  padding: 0 3rem;
+  width: 100%;
+  background: #f9a828;
+  color: #000000;
+  margin-top: .6rem;
+}
+#contact button.submitform:hover, #contact button.submitform:focus {
+  background: #f89e0f;
+}
+
+#message-warning, #message-success {
+  display: none;
+  background: #000000;
+  padding: 3rem;
+  margin-bottom: 3.6rem;
+  width: 100%;
+}
+
+#message-warning {
+  color: #D32B2E;
+}
+
+#message-success {
+  color: #f9a828;
+}
+
+#message-warning i,
+#message-success i {
+  margin-right: 10px;
+}
+
+/* form loader */
+#submit-loader {
+  display: none;
+  position: relative;
+  left: 0;
+  top: 1.8rem;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 4.2rem;
+}
+#submit-loader .text-loader {
+  display: none;
+  font-family: "montserrat-bold", sans-serif;
+  font-size: 1.4rem;
+  color: #FFFFFF;
+  letter-spacing: .2rem;
+  text-transform: uppercase;
+}
+
+.oldie #submit-loader .s-loader {
+  display: none;
+}
+.oldie #submit-loader .text-loader {
+  display: block;
+}
+

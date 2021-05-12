@@ -18,4 +18,10 @@ public class homeController {
     public String aboutScreen(){
         return "Temporary/about"; // jsp
     }
+    
+    @RequestMapping("home/contact.do") 
+    public String contactScreen(){
+        return "home/contact"; // jsp
+    }
+    
 }

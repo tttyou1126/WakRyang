@@ -68,7 +68,7 @@ WEB-INF 폴더
 										<li><a href="#">Blog</a></li>
 									</ul></li>
 							</ul></li>
-							<li class="has-children"><a href="single.html">Practice</a>
+							<li class="has-children"><a href="${path}/sample/board.do">Practice</a>
 							<ul class="dropdown">
 								<li><a href="${path}/sample/board.do">Board</a></li>
 								
@@ -104,7 +104,7 @@ WEB-INF 폴더
 								</li>
 							</ul>
 							</li>
-						<li><a href="contact.html">Contact</a></li>
+						<li><a href="${path}/home/contact.do">Contact</a></li>
 
 
 						<c:if test="${sessionScope.userAuth == 'ADMIN'}">
