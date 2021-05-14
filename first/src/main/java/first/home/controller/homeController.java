@@ -9,6 +9,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
  
 @Controller // 현재의 클래스를 controller bean에 등록시킴
 public class homeController {
@@ -36,6 +38,7 @@ public class homeController {
 
 	// mailSending 코드
 	@RequestMapping(value = "home/mailSending.do")
+	@ResponseBody
 	public String mailSending(HttpServletRequest request) {
 
 		String tomail = "aboutdaybreak@gmail.com";

@@ -43,7 +43,7 @@
    			<h5>문의</h5>
 
             <!-- form --> <!-- 210512 Contact화면 메일 전송 기능 추가 -->
-            <form action="${path}/home/mailSending.do" name="contactForm" id="contactForm" method="post">     			
+            <form action="" name="contactForm" id="contactForm" method="post">     			
 
                <div class="form-field">
  					   <input name="contactName" type="text" id="contactName" placeholder="Name" value="" minlength="2" required="">
@@ -114,6 +114,30 @@
 		</div>
 	</section> <!-- end contact -->
 </div>
+
+
+<script type="text/javascript">
+
+	$(".submitform").click(function(){
+        if(confirm("전송하시겠습니까?")){
+            $.ajax({
+                type: "POST",
+                data : $('#contactForm').serialize(),
+                url: "${path}/home/mailSending.do",
+                error : function(error) {
+                	alert("전송에 실패하였습니다.");
+                },
+                success: function(data){ // 210514 작동 안됨(확인 필요)
+                    alert("정상적으로 전송되었습니다.");
+                },
+            });
+        }
+        alert("정상적으로 전송되었습니다."); // 210514 성공메시지 임시 방편
+    });
+	
+	
+	</script>
+
 
 </body>
 </html>
