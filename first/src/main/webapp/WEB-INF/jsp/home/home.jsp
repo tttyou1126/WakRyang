@@ -53,89 +53,77 @@
 
           <div class="image-wrap-2">
             <div class="image-info">
+              <h2 class="mb-3">이력서</h2>
+              <a href="" class="btn btn-outline-white py-2 px-4">바로가기</a>
+            </div>
+            <img src="/images/home/resume_image.jpg" alt="Image" class="img-fluid">
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <div class="image-wrap-2">
+            <div class="image-info">
+              <h2 class="mb-3">개발자 소개</h2>
+              <a href="/direct_jsp/aboutMe.jsp" class="btn btn-outline-white py-2 px-4">바로가기</a>
+            </div>
+            <img src="/images/home/developer_image.jpg" alt="Image" class="img-fluid">
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="image-wrap-2">
+            <div class="image-info">
+              <h2 class="mb-3">문의하기</h2>
+              <a href="${path}/home/contact.do" class="btn btn-outline-white py-2 px-4">바로가기</a>
+            </div>
+            <img src="/images/home/ask_image.jpg" alt="Image" class="img-fluid">
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="image-wrap-2">
+            <div class="image-info">
+              <h2 class="mb-3">GitHub</h2>
+              <a href="https://github.com/tttyou1126" class="btn btn-outline-white py-2 px-4">바로가기</a>
+            </div>
+            <img src="/images/home/github_image.jpg" alt="Image" class="img-fluid">
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="image-wrap-2">
+            <div class="image-info">
               <h2 class="mb-3">게시판</h2>
               <a href="${path}/sample/board.do" class="btn btn-outline-white py-2 px-4">바로가기</a>
             </div>
-            <img src="/images/home/img_1.jpg" alt="Image" class="img-fluid">
-          </div>
-
-        </div>
-        <div class="col-lg-4">
-          <div class="image-wrap-2">
-            <div class="image-info">
-              <h2 class="mb-3">Portrait</h2>
-              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
-            </div>
-            <img src="/images/home/img_2.jpg" alt="Image" class="img-fluid">
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="image-wrap-2">
-            <div class="image-info">
-              <h2 class="mb-3">People</h2>
-              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
-            </div>
-            <img src="/images/home/img_3.jpg" alt="Image" class="img-fluid">
+            <img src="/images/home/board_image.jpg" alt="Image" class="img-fluid">
           </div>
         </div>
 
         <div class="col-lg-4">
           <div class="image-wrap-2">
-            <div class="image-info">
-              <h2 class="mb-3">Architecture</h2>
-              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
-            </div>
-            <img src="/images/home/img_4.jpg" alt="Image" class="img-fluid">
+
+            <img src="/images/home/coming_image.gif" alt="Image" class="img-fluid">
           </div>
         </div>
 
         <div class="col-lg-4">
           <div class="image-wrap-2">
-            <div class="image-info">
-              <h2 class="mb-3">Animals</h2>
-              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
-            </div>
-            <img src="/images/home/img_5.jpg" alt="Image" class="img-fluid">
+
+            <img src="/images/home/coming_image.gif" alt="Image" class="img-fluid">
           </div>
         </div>
 
         <div class="col-lg-4">
           <div class="image-wrap-2">
-            <div class="image-info">
-              <h2 class="mb-3">Sports</h2>
-              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
-            </div>
-            <img src="/images/home/img_6.jpg" alt="Image" class="img-fluid">
+
+            <img src="/images/home/coming_image.gif" alt="Image" class="img-fluid">
           </div>
         </div>
 
         <div class="col-lg-4">
           <div class="image-wrap-2">
-            <div class="image-info">
-              <h2 class="mb-3">Travel</h2>
-              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
-            </div>
-            <img src="/images/home/img_7.jpg" alt="Image" class="img-fluid">
-          </div>
-        </div>
 
-        <div class="col-lg-4">
-          <div class="image-wrap-2">
-            <div class="image-info">
-              <h2 class="mb-3">People</h2>
-              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
-            </div>
-            <img src="/images/home/img_3.jpg" alt="Image" class="img-fluid">
-          </div>
-        </div>
-
-        <div class="col-lg-4">
-          <div class="image-wrap-2">
-            <div class="image-info">
-              <h2 class="mb-3">Architecture</h2>
-              <a href="single.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
-            </div>
-            <img src="/images/home/img_4.jpg" alt="Image" class="img-fluid">
+            <img src="/images/home/coming_image.gif" alt="Image" class="img-fluid">
           </div>
         </div>
 
@@ -145,9 +133,7 @@
     <div class="footer py-4">
       <div class="container-fluid text-center">
         <p>
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All rights reserved | by SunJongMin
         </p>
       </div>
     </div>
